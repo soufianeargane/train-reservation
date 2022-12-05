@@ -1,2 +1,7 @@
 <?php
-// dont type anything in index.php
+include './config/db.php';
+
+
+$con = new Dbcon();
+
+$con ->connect();
