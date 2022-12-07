@@ -1,5 +1,5 @@
 <?php
-include_once '../config/db.php';
+
 class cities extends Dbcon
 {
 
@@ -11,6 +11,6 @@ class cities extends Dbcon
 
         $stmt->execute();
 
-        return $stmt;
+        return $stmt->fetchAll();
     }
 }

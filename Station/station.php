@@ -1,10 +1,16 @@
 <?php
 include "../config/db.php";
 include "../Crud-station/crud-station-controle-classes.php";
+include "../Classes/cities.php";
+
 
 
 $data = new crudStationConfigue();
-$all = $data->fetchAll();
+$all = $data->fetchAllTables();
+
+$fetch2 = new cities();
+//call the method that will fetch all the citie from ville table , so we can use it select
+$allCities2 = $fetch2->fetchCities();
 
 
 ?>
@@ -263,7 +269,7 @@ $all = $data->fetchAll();
                 <tbody>
                     <?php
 
-                    foreach ($all  as $key => $val) {
+                    foreach ($all as $val) {
                         echo '
                         <form action="../Crud-station/crud-station-db.php" method="post">
                             <tr>
@@ -272,7 +278,23 @@ $all = $data->fetchAll();
 
                                 <td class="border border-slate-700 ...">' . $val["id_station"] . '</td>
                                 <td class="border border-slate-700 ..."><input class ="text-center border-none p-0 w-full" name="nameOfStation" type="text" value="' . $val["name"] . '"></td>
-                                <td class="border border-slate-700 ..."><input class ="text-center border-none p-0 w-full" name="cityOfStation" type="text" value="' . $val["ville"] . '"></td>
+                                <td class="border border-slate-700 ...">
+                                <select id="" name="cityOfStation" placeholder="City ..." class="text-center border-none p-0 w-full" required>
+                                <option selected value="'.$val["id"].'">' . $val["ville"] . '</option>'; ?>
+
+                    <?php
+
+                        foreach ($allCities2 as $v) {
+                            echo "<option value='{$v["id"]}'>{$v["ville"]}</option>";
+                        }
+
+
+                        echo '
+                                </select>
+                                </td>
+                                
+
+                                
                                 
                                 <td class="border border-slate-700 ">
                                     <div class="flex flex-wrap gap-2 py-2 justify-center">
@@ -281,7 +303,7 @@ $all = $data->fetchAll();
                                     </div>
                                 </td>
                             </tr>
-                        </form>';
+                        </form> ';
                     };
 
                     ?>
@@ -354,15 +376,5 @@ $all = $data->fetchAll();
 
 <!-- ctrl + m -->
 <script src="../Users/script.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script>
-    $(function() {
-        $("#from").select2();
-        $("#to").select2();
-    });
-</script>
 
 </html>

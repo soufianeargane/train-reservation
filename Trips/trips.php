@@ -1,3 +1,10 @@
+<?php
+include "../config/db.php";
+include "../Crud-station/crud-station-controle-classes.php";
+include "../Classes/cities.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -245,7 +252,6 @@
                         <th class="border border-slate-600 ...">Train-Id</th>
                         <th class="border border-slate-700 ...">From</th>
                         <th class="border border-slate-600 ...">To</th>
-                        <th class="border border-slate-600 ...">Price</th>
                         <th class="border border-slate-600 ...">Action</th>
                     </tr>
                 </thead>
@@ -255,7 +261,6 @@
                         <td class="border border-slate-700 ...">A112</td>
                         <td class="border border-slate-700 ...">Fes - 22:00<br>at: 12/12/2022</td>
                         <td class="border border-slate-700 ...">Asfi - 23:00<br>at: 12/12/2022</td>
-                        <td class="border border-slate-700 ...">55dhs</td>
 
                         <td class="border border-slate-700 ">
                             <div class="flex flex-wrap gap-2 py-2 justify-center">
@@ -264,6 +269,152 @@
                             </div>
                         </td>
 
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">2</td>
+                        <td class="border border-slate-700 ...">A111</td>
+                        <td class="border border-slate-700 ...">Oujda - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Asfi - 23:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">3</td>
+                        <td class="border border-slate-700 ...">A110</td>
+                        <td class="border border-slate-700 ...">Oujda - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Taourirt - 23:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">1</td>
+                        <td class="border border-slate-700 ...">A112</td>
+                        <td class="border border-slate-700 ...">Fes - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Asfi - 23:00<br>at: 12/12/2022</td>
+
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">2</td>
+                        <td class="border border-slate-700 ...">A111</td>
+                        <td class="border border-slate-700 ...">Oujda - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Asfi - 23:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">3</td>
+                        <td class="border border-slate-700 ...">A110</td>
+                        <td class="border border-slate-700 ...">Oujda - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Taourirt - 23:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">1</td>
+                        <td class="border border-slate-700 ...">A112</td>
+                        <td class="border border-slate-700 ...">Fes - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Asfi - 23:00<br>at: 12/12/2022</td>
+
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">2</td>
+                        <td class="border border-slate-700 ...">A111</td>
+                        <td class="border border-slate-700 ...">Oujda - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Asfi - 23:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">3</td>
+                        <td class="border border-slate-700 ...">A110</td>
+                        <td class="border border-slate-700 ...">Oujda - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Taourirt - 23:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">1</td>
+                        <td class="border border-slate-700 ...">A112</td>
+                        <td class="border border-slate-700 ...">Fes - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Asfi - 23:00<br>at: 12/12/2022</td>
+
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">2</td>
+                        <td class="border border-slate-700 ...">A111</td>
+                        <td class="border border-slate-700 ...">Oujda - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Asfi - 23:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">3</td>
+                        <td class="border border-slate-700 ...">A110</td>
+                        <td class="border border-slate-700 ...">Oujda - 22:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ...">Taourirt - 23:00<br>at: 12/12/2022</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
                     </tr>
 
                 </tbody>
@@ -330,13 +481,9 @@
 
 <!-- ctrl + m -->
 <script src="../Users/script.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script>
-    $(function() {
-        $("#country").select2();
-    });
-</script>
+
+
+
+
 
 </html>
