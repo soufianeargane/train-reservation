@@ -1,9 +1,11 @@
 <?php
+include_once '../config/db.php';
+class cities extends Dbcon
+{
 
-class cities extends Dbcon {
 
-
-    public function fetchCities(){
+    public function fetchCities()
+    {
 
         $stmt = $this->connect()->prepare("SELECT * FROM `ville` ");
 
@@ -11,8 +13,4 @@ class cities extends Dbcon {
 
         return $stmt;
     }
-
-    
-
 }
-?>

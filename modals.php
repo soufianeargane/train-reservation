@@ -1,15 +1,18 @@
-
-<?php 
+<?php
 include "../Classes/cities.php";
-$fetch = new cities();
 //call the method that will fetch all the citie from ville table , so we can use it select
+$fetch = new cities();
 $allCities = $fetch->fetchCities();
+$fetch2 = new cities();
+$allCities2 = $fetch2->fetchCities();
+$fetch3 = new cities();
+$allCities3 = $fetch3->fetchCities();
 ?>
 
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
     .select2,
-    .select2-container,conflicts
+    .select2-container,
     .select2-container--default {
         width: 100% !important;
         --tw-text-opacity: 1;
@@ -67,16 +70,15 @@ $allCities = $fetch->fetchCities();
                     <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name Of City</label>
                         <select id="select-state" name="cityWhereTheStationExist" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                        <option selected disabled>Select a City ...</option>
+                            <option selected disabled>Select a City ...</option>
 
-                            <?php 
+                            <?php
                             foreach ($allCities as $key => $val) {
-                                echo '<option value="'.$val["id"].'">'.$val["ville"].'</option>';
-
+                                echo '<option value="' . $val["id"] . '">' . $val["ville"] . '</option>';
                             }
 
                             ?>
-                            
+
                         </select>
                     </div>
                 </div>
@@ -171,27 +173,37 @@ $allCities = $fetch->fetchCities();
                 <div class="p-6 space-y-6">
                     <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name Of Train</label>
-                        <input type="text" name="train_name" id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Station ..." required>
-                    </div>
-                    <div>
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seats</label>
-                        <input type="text" name="seat" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        <select name="" id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                            <option selected disabled>Select the train</option>
+                            <option value="1">United States of America</option>
+
+                        </select>
                     </div>
                     <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">From</label>
-                        <select name="country" id="country">
+                        <select name="" id="from">
                             <option value="">Select your country</option>
-                            <option value="US">United States of America</option>
-                            <option value="KE">Kenya</option>
-                            <option value="UK">United Kingdom</option>
-                            <option value="IN">India</option>
-                            <option value="CN">China</option>
-                            <option value="CA">Canada</option>
-                            <option value="ZA">South Africa</option>
+                            <?php
+                            foreach ($allCities2 as $row) {
+                                echo '<option value="' . $row["id"] . '">' . $row["ville"] . '</option>';
+                            }
+                            ?>
                         </select>
                     </div>
                     <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">To</label>
+                        <select name="" id="to">
+                            <option value="">Select your country</option>
+                            <option value="1">United States of America</option>
+                            <?php
+                            foreach ($allCities3 as $allCities3) {
+                                echo '<option value="' . $allCities3["id"] . '">' . $allCities3["ville"] . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
                         <input type="text" name="to" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                     </div>
                 </div>
@@ -230,7 +242,8 @@ $allCities = $fetch->fetchCities();
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     $(function() {
-        $("#country").select2();
+        $("#from").select2();
+        $("#to").select2();
     });
 </script>
 
