@@ -51,23 +51,25 @@ class crudStationConfigue extends Dbcon
 
     public function fetchAll()
     {
-        $stmt = $this->connect()->prepare("SELECT * FROM `stations`");
+        $stmt = $this->connect()->prepare("SELECT stations.*, ville.* FROM `stations` INNER JOIN `ville` ON stations.id_city = ville.id;");
         $stmt->execute();
         return $stmt->fetchAll();
         // $cc[]=$stmt->execute();
         // return $cc;
     }
 
-    public function fetchone()
-    {
-        $stmt = $this->connect()->prepare("SELECT * FROM `stations` WHERE id=? ");
-        $stmt->execute($this->id);
-        return $stmt->fetchAll();
-    }
+   
+
+    // public function fetchone()
+    // {
+    //     $stmt = $this->connect()->prepare("SELECT * FROM `stations` WHERE id=? ");
+    //     $stmt->execute($this->id);
+    //     return $stmt->fetchAll();
+    // }
 
     public function update()
     {
-        $stmt = $this->connect()->prepare("UPDATE `stations` SET `station`=?,`city`=? WHERE id =?");
+        $stmt = $this->connect()->prepare("UPDATE `stations` SET `name`=?,`id_city`=? WHERE id_station =?");
 
         $stmt->execute([$this->nameOfStation, $this->cityOfStation, $this->id]);
     }
