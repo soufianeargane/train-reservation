@@ -30,22 +30,10 @@
                     <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name Of City</label>
                         <select id="select-state" name="cityWhereTheStationExist" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                            <option value="">Select a City ...</option>
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="DC">District of Columbia</option>
-                            <option value="FL">Florida</option>
-                            <option value="GA">Georgia</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="ID">Idaho</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IN">Indiana</option>
+                            <option selected disabled>Select a City ...</option>
+                            <option value="1">Alabama</option>
+                            <option value="2">Alaska</option>
+                            <option value="3">Arizona</option>
                         </select>
                     </div>
                 </div>
