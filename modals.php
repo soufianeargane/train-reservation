@@ -1,3 +1,10 @@
+<?php 
+include "../Classes/cities.php";
+$fetch = new cities();
+//call the method that will fetch all the citie from ville table , so we can use it select
+$allCities = $fetch->fetchCities();
+?>
+
 <!-- =====================Station Modal===================== -->
 <!-- Modal toggle -->
 <button id="ButtonOfStationModal" class="hidden block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="staticModal1">
@@ -30,10 +37,16 @@
                     <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name Of City</label>
                         <select id="select-state" name="cityWhereTheStationExist" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                            <option selected disabled>Select a City ...</option>
-                            <option value="1">Alabama</option>
-                            <option value="2">Alaska</option>
-                            <option value="3">Arizona</option>
+                        <option selected disabled>Select a City ...</option>
+
+                            <?php 
+                            foreach ($allCities as $key => $val) {
+                                echo '<option value="'.$val["id"].'">'.$val["ville"].'</option>';
+
+                            }
+
+                            ?>
+                            
                         </select>
                     </div>
                 </div>
@@ -129,10 +142,7 @@
                     <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name Of Train</label>
                     <input type="text" name="" id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Station ..." required>
                 </div>
-                <div>
-                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seats</label>
-                    <input type="text" name="" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                </div>
+                
                 <div>
                     <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">From</label>
                     <input type="text" name="" id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="City ..." required>

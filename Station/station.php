@@ -1,8 +1,12 @@
 <?php
 include "../config/db.php";
 include "../Crud-station/crud-station-controle-classes.php";
+
+
 $data = new crudStationConfigue();
 $all = $data->fetchAll();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -259,7 +263,7 @@ $all = $data->fetchAll();
                 <tbody>
                     <?php
 
-                    foreach ($all as $key => $val) {
+                    foreach ($all  as $key => $val) {
                         echo '
                         <form action="../Crud-station/crud-station-db.php" method="post">
                             <tr>
@@ -268,7 +272,8 @@ $all = $data->fetchAll();
 
                                 <td class="border border-slate-700 ...">' . $val["id_station"] . '</td>
                                 <td class="border border-slate-700 ..."><input class ="text-center border-none p-0 w-full" name="nameOfStation" type="text" value="' . $val["name"] . '"></td>
-                                <td class="border border-slate-700 ..."><input class ="text-center border-none p-0 w-full" name="cityOfStation" type="text" value="' . $val["id_city"] . '"></td>
+                                <td class="border border-slate-700 ..."><input class ="text-center border-none p-0 w-full" name="cityOfStation" type="text" value="' . $val["ville"] . '"></td>
+                                
                                 <td class="border border-slate-700 ">
                                     <div class="flex flex-wrap gap-2 py-2 justify-center">
                                             <button type="submit" name="updateBtnStation" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
