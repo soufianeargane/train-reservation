@@ -1,8 +1,3 @@
-<?php
-include "../config/db.php";
-include "../Crud-station/crud-station-controle-classes.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
