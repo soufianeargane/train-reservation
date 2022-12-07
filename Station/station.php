@@ -268,6 +268,8 @@ $all = $data->fetchAll();
                         <form action="../Crud-station/crud-station-db.php" method="post">
                             <tr>
                                 <input type="hidden" name="idOfStation" value="' . $val["id_station"] . '">
+                                <input type="hidden" name="cityOfStation" value="' . $val["id"] . '">
+
                                 
 
                                 <td class="border border-slate-700 ...">' . $val["id_station"] . '</td>
