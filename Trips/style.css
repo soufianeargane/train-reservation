@@ -1,0 +1,38 @@
+
+
+.navbar{
+    background-color: #1f2937 !important;
+}
+
+@media (max-width:636px){
+    .sidebar{
+        display:none;
+    }
+    .mainBody{
+        display: grid;
+        justify-items: center;
+    }
+   
+}
+
+@media (min-width:636px){
+    .navbar{
+        display: none;
+    } 
+}
+
+/* https://stackoverflow.com/questions/9664325/style-the-scrollbar-with-css-in-google-chrome-webkit */
+::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+    background: #9ca3af      ;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1f2937      ;
+    
+}
+
+::-webkit-scrollbar-corner {
+    background: #9ca3af      ;
+}
