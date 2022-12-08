@@ -1,5 +1,5 @@
 <?php
-
+include_once '../config/db.php';
 class cities extends Dbcon
 {
 
@@ -10,7 +10,7 @@ class cities extends Dbcon
         $stmt = $this->connect()->prepare("SELECT * FROM `ville` ");
 
         $stmt->execute();
-
         return $stmt->fetchAll();
+
     }
 }
