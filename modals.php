@@ -1,6 +1,4 @@
-
 <?php
-include "../Classes/cities.php";
 //call the method that will fetch all the citie from ville table , so we can use it select
 $fetch = new cities();
 $allCities = $fetch->fetchCities();
@@ -8,12 +6,6 @@ $fetch2 = new cities();
 $allCities2 = $fetch2->fetchCities();
 $fetch3 = new cities();
 $allCities3 = $fetch3->fetchCities();
-
-if (isset($_POST['add'])) {
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
-}
 ?>
 
 <link rel="stylesheet" href="assets/css/style.css">
@@ -79,12 +71,11 @@ if (isset($_POST['add'])) {
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name Of City</label>
                         <select id="select-state" name="cityWhereTheStationExist" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
 
-                        <option selected disabled>Select a City ...</option>
+                            <option selected disabled>Select a City ...</option>
 
-                            <?php 
+                            <?php
                             foreach ($allCities as $key => $val) {
-                                echo '<option value="'.$val["id"].'">'.$val["ville"].'</option>';
-
+                                echo '<option value="' . $val["id"] . '">' . $val["ville"] . '</option>';
                             }
 
                             ?>

@@ -89,4 +89,10 @@ class trip extends Dbcon
         $result = $stmt->fetchAll();
         return $result;
     }
+    // delete data
+    public function deleteTrip()
+    {
+        $stmt = $this->connect()->prepare("DELETE FROM `trips` WHERE id_trip=?");
+        $stmt->execute([$this->id_trip]);
+    }
 }

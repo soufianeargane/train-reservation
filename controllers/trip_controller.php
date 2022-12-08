@@ -20,3 +20,13 @@ if (isset($_POST['add_trip'])) {
     $trip->insertTrip();
     header("location:../Trips/trips.php");
 }
+
+if (isset($_POST['delete_trip'])) {
+    # code...
+    $id_trip = $_POST['id_trip'];
+    include('../modals/trips_modal.php');
+    $trip = new trip();
+    $trip->setIdOfTrip($id_trip);
+    $trip->deleteTrip();
+    header("location:../Trips/trips.php");
+}
