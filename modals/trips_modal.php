@@ -84,4 +84,4 @@ class trip extends Dbcon
         $result = $stmt->fetchAll();
         return $result;
     }
-
+}
