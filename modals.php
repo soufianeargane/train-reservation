@@ -1,5 +1,4 @@
 <?php 
-include "../Classes/cities.php";
 $fetch = new cities();
 //call the method that will fetch all the citie from ville table , so we can use it select
 $allCities = $fetch->fetchCities();
