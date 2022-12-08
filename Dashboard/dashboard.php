@@ -1,7 +1,11 @@
+
 <?php
 include "../config/db.php";
 include "../Crud-station/crud-station-controle-classes.php";
+include "../Classes/cities.php";
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -376,6 +380,15 @@ include "../Crud-station/crud-station-controle-classes.php";
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 <script src="../Users/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(function() {
+        $("#from").select2();
+        $("#to").select2();
+    });
+</script>
 
 
 </html>
