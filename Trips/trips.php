@@ -250,7 +250,7 @@ include "../Classes/cities.php";
                 <thead>
                     <tr>
                         <th class="border border-slate-600 ...">#</th>
-                        <th class="border border-slate-600 ...">Train-Id</th>
+                        <th class="border border-slate-600 ...">Train name</th>
                         <th class="border border-slate-700 ...">From</th>
                         <th class="border border-slate-600 ...">To</th>
                         <th class="border border-slate-600 ...">Price</th>
@@ -282,10 +282,9 @@ include "../Classes/cities.php";
                                 <br> at <?php echo $row['arriving_time'] ?>
                             </td>
                             <td class="border border-slate-700 ..."><?php echo $row['price'] ?>dhs</td>
-
                             <td class="border border-slate-700 ">
                                 <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Edit</button>
+                                    <a href="edit.php?id=<?php echo $row['id_trip'] ?>" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Edit</a>
                                     <form action="../controllers/trip_controller.php" method="POST">
                                         <input type="hidden" name="id_trip" value="<?php echo $row['id_trip'] ?>">
                                         <button type="submit" name="delete_trip" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
@@ -295,7 +294,6 @@ include "../Classes/cities.php";
                         <?php  } ?>
                         </tr>
                 </tbody>
-
                 <!-- The link from where i got this code -->
                 <!-- https://tailwindcomponents.com/component/cookie-banner-tailwind-css-alpine-js -->
                 <div x-data="{ open: true }" class="" id="popUp">
