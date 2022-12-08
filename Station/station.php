@@ -273,6 +273,8 @@ $allCities2 = $fetch2->fetchCities();
                         <form action="../Crud-station/crud-station-db.php" method="post">
                             <tr>
                                 <input type="hidden" name="idOfStation" value="' . $val["id_station"] . '">
+                                <input type="hidden" name="cityOfStation" value="' . $val["id"] . '">
+
                                 
 
                                 <td class="border border-slate-700 ...">' . $val["id_station"] . '</td>
@@ -383,6 +385,7 @@ $allCities2 = $fetch2->fetchCities();
 <script src="../Users/script.js"></script>
 
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -395,3 +398,4 @@ $allCities2 = $fetch2->fetchCities();
 
 
 </html>
+
