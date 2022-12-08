@@ -1,4 +1,3 @@
-
 <?php
 include "../config/db.php";
 include "../Crud-station/crud-station-controle-classes.php";
@@ -269,9 +268,9 @@ include "../Classes/cities.php";
                     ?>
                         <tr>
                             <td class="border border-slate-700 ..."><?php echo ($i++) ?></td>
-                            <td class="border border-slate-700 ..."><?php echo $row['train_id'] ?></td>
-                            <td class="border border-slate-700 ..."><?php echo $row['station_start_id'] ?> <br> at <?php echo $row['starting_time'] ?></td>
-                            <td class="border border-slate-700 ..."><?php echo $row['station_arrive_id'] ?> <br> at <?php echo $row['arriving_time'] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $row['name'] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $row['start'] ?> <br> at <?php echo $row['starting_time'] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $row['end'] ?> <br> at <?php echo $row['arriving_time'] ?></td>
                             <td class="border border-slate-700 ..."><?php echo $row['price'] ?>dhs</td>
 
                             <td class="border border-slate-700 ">
