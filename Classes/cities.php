@@ -10,7 +10,7 @@ class cities extends Dbcon
         $stmt = $this->connect()->prepare("SELECT * FROM `ville` ");
 
         $stmt->execute();
+        return $stmt->fetchAll();
 
-        return $stmt;
     }
 }

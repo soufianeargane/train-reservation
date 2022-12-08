@@ -1,5 +1,6 @@
 <?php
 include_once '../config/db.php';
+
 class trip extends Dbcon
 {
     private $id_trip;
@@ -83,4 +84,4 @@ class trip extends Dbcon
         $result = $stmt->fetchAll();
         return $result;
     }
-}
+

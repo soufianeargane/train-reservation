@@ -1,3 +1,8 @@
+<?php
+include "../config/db.php";
+include "../Crud-station/crud-station-controle-classes.php";
+include "../Classes/cities.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -226,6 +231,12 @@
                                 <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="../help/help.php" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                                <iconify-icon icon="material-symbols:help-clinic-rounded" style="color: #9ca3af;" width="25" height="25"></iconify-icon>
+                                <span class="ml-3">Help</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </aside>
@@ -387,7 +398,4 @@
         $("#to").select2();
     });
 </script>
-
-
-
 </html>

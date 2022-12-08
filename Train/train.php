@@ -1,3 +1,9 @@
+<?php
+include "../config/db.php";
+include "../Crud-station/crud-station-controle-classes.php";
+include "../Classes/cities.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -244,6 +250,9 @@
                     <tr>
                         <th class="border border-slate-600 ...">#</th>
                         <th class="border border-slate-600 ...">Train</th>
+                        <th class="border border-slate-700 ...">Seats</th>
+                        <th class="border border-slate-600 ...">From</th>
+                        <th class="border border-slate-600 ...">To</th>
                         <th class="border border-slate-600 ...">Action</th>
                     </tr>
                 </thead>
@@ -251,6 +260,12 @@
                     <tr>
                         <td class="border border-slate-700 ...">1</td>
                         <td class="border border-slate-700 ...">Indianapolis</td>
+
+                        <td class="border border-slate-700 ...">10/50</td>
+                        <td class="border border-slate-700 ...">Oujda</td>
+                        <td class="border border-slate-700 ...">Tourirt</td>
+
+
                         <td class="border border-slate-700 ">
                             <div class="flex flex-wrap gap-2 py-2 justify-center">
                                 <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
@@ -260,6 +275,60 @@
 
                     </tr>
 
+                    <tr>
+                        <td class="border border-slate-700 ...">2</td>
+                        <td class="border border-slate-700 ...">Columbus</td>
+                        <td class="border border-slate-700 ...">10/50</td>
+                        <td class="border border-slate-700 ...">Fes</td>
+                        <td class="border border-slate-700 ...">Taourirt</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">3</td>
+                        <td class="border border-slate-700 ...">Detroit</td>
+                        <td class="border border-slate-700 ...">10/50</td>
+                        <td class="border border-slate-700 ...">Tourirt</td>
+                        <td class="border border-slate-700 ...">CasaBlanca</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">4</td>
+                        <td class="border border-slate-700 ...">Detroit</td>
+                        <td class="border border-slate-700 ...">10/50</td>
+                        <td class="border border-slate-700 ...">Tourirt</td>
+                        <td class="border border-slate-700 ...">CasaBlanca</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-slate-700 ...">5</td>
+                        <td class="border border-slate-700 ...">Detroit</td>
+                        <td class="border border-slate-700 ...">10/50</td>
+                        <td class="border border-slate-700 ...">Tourirt</td>
+                        <td class="border border-slate-700 ...">CasaBlanca</td>
+                        <td class="border border-slate-700 ">
+                            <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
 
                 </tbody>
                 <!-- The link from where i got this code -->
@@ -323,6 +392,7 @@
 
 <!-- ctrl + m -->
 <script src="../Users/script.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -331,6 +401,7 @@
         $("#country").select2();
     });
 </script>
+
 
 
 </html>

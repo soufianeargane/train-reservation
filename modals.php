@@ -1,3 +1,4 @@
+
 <?php
 include "../Classes/cities.php";
 //call the method that will fetch all the citie from ville table , so we can use it select
@@ -44,6 +45,7 @@ if (isset($_POST['add'])) {
         transform: translateY(-50%) !important;
     }
 </style>
+
 <!-- =====================Station Modal===================== -->
 <!-- Modal toggle -->
 <button id="ButtonOfStationModal" class="hidden block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="staticModal1">
@@ -76,11 +78,13 @@ if (isset($_POST['add'])) {
                     <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name Of City</label>
                         <select id="select-state" name="cityWhereTheStationExist" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                            <option selected disabled>Select a City ...</option>
 
-                            <?php
+                        <option selected disabled>Select a City ...</option>
+
+                            <?php 
                             foreach ($allCities as $key => $val) {
-                                echo '<option value="' . $val["id"] . '">' . $val["ville"] . '</option>';
+                                echo '<option value="'.$val["id"].'">'.$val["ville"].'</option>';
+
                             }
 
                             ?>
@@ -158,7 +162,9 @@ if (isset($_POST['add'])) {
     Toggle modal
 </button>
 
-<!--  modal -->
+
+<!-- Main modal -->
+
 <div id="staticModal2" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
     <div class="relative w-full h-full max-w-2xl md:h-auto">
         <!-- Modal content -->
@@ -228,6 +234,7 @@ if (isset($_POST['add'])) {
                     <button data-modal-toggle="staticModal2" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
@@ -252,6 +259,7 @@ if (isset($_POST['add'])) {
     });
 </script>
 <!-- end -->
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -261,7 +269,6 @@ if (isset($_POST['add'])) {
         $("#to").select2();
     });
 </script>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
