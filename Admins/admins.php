@@ -1,6 +1,8 @@
 <?php
 include "../config/db.php";
 include "../Crud-station/crud-station-controle-classes.php";
+include "../Classes/cities.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
