@@ -1,3 +1,3 @@
 <?php
 
-echo "hello";
+echo "WELCOME".$_SESSION['email'];

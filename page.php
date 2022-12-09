@@ -11,6 +11,13 @@
       <title>Document</title>
 </head>
 <body style="position: static;overflow-y: scroll;">
+
+<?php
+session_start();
+echo "Welcome "." ".$_SESSION['username'];
+
+?>
+
 <div class="container mx-auto">
 <!--first section  -->
  <div class="flex flex-wrap justify-between px-6">
