@@ -48,7 +48,6 @@ class crudStationConfigue extends Dbcon
         $stmt = $this->connect()->prepare("INSERT INTO `stations`(`name`,`id_city`) VALUES (?,?)");
         $stmt->execute([$this->nameOfStation, $this->cityOfStation]);
     }
-
     public function fetchAllTables()
     {
         $stmt = $this->connect()->prepare("SELECT stations.*, ville.* FROM `stations` INNER JOIN `ville` ON stations.id_city = ville.id;");
@@ -57,12 +56,6 @@ class crudStationConfigue extends Dbcon
         // $cc[]=$stmt->execute();
         // return $cc;
     }
-
-    
-    
-
-
-   
 
     // public function fetchone()
     // {

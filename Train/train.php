@@ -1,4 +1,3 @@
-
 <?php
 include "../config/db.php";
 include "../Crud-station/crud-station-controle-classes.php";
@@ -262,9 +261,11 @@ include "../Classes/cities.php";
                     <tr>
                         <td class="border border-slate-700 ...">1</td>
                         <td class="border border-slate-700 ...">Indianapolis</td>
+
                         <td class="border border-slate-700 ...">10/50</td>
                         <td class="border border-slate-700 ...">Oujda</td>
                         <td class="border border-slate-700 ...">Tourirt</td>
+
 
                         <td class="border border-slate-700 ">
                             <div class="flex flex-wrap gap-2 py-2 justify-center">
@@ -274,6 +275,7 @@ include "../Classes/cities.php";
                         </td>
 
                     </tr>
+
                     <tr>
                         <td class="border border-slate-700 ...">2</td>
                         <td class="border border-slate-700 ...">Columbus</td>
@@ -328,6 +330,7 @@ include "../Classes/cities.php";
                             </div>
                         </td>
                     </tr>
+
                 </tbody>
                 <!-- The link from where i got this code -->
                 <!-- https://tailwindcomponents.com/component/cookie-banner-tailwind-css-alpine-js -->
@@ -390,6 +393,16 @@ include "../Classes/cities.php";
 
 <!-- ctrl + m -->
 <script src="../Users/script.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(function() {
+        $("#country").select2();
+    });
+</script>
+
 
 
 </html>
