@@ -3,7 +3,7 @@ include "../fpdf185/fpdf.php";
 
 
 $nameFromSession = "Saad Meddiche";
-$idTrip = "1";
+$idTrip = "10";
 
 
 
@@ -15,11 +15,11 @@ $dataBase = "sgtt";
 $connection = mysqli_connect($serverName, $userName, $password, $dataBase);
 //end
 
-$query = mysqli_query($connection,"SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` ON tickets.trip_id =$idTrip AND tickets.city_from_id = ville.id");
-$data=mysqli_fetch_assoc($query);
+$query = mysqli_query($connection, "SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` ON tickets.trip_id =$idTrip AND tickets.city_from_id = ville.id");
+$data = mysqli_fetch_assoc($query);
 
-$query2 = mysqli_query($connection,"SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` ON tickets.trip_id =$idTrip AND tickets.city_to_id = ville.id");
-$data2=mysqli_fetch_assoc($query2);
+$query2 = mysqli_query($connection, "SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` ON tickets.trip_id =$idTrip AND tickets.city_to_id = ville.id");
+$data2 = mysqli_fetch_assoc($query2);
 
 $pdf = new FPDF();
 
@@ -88,7 +88,7 @@ $pdf->SetFont('Arial', 'B', 16);
 $pdf->Cell(2, 5, '', 0, 0);
 $pdf->Cell(45, 5, 'Depature', 0, 0);
 $pdf->Cell(45, 5, 'Arrive', 0, 0);
-$pdf->Cell(100, 5, '', 0, 1);//end line
+$pdf->Cell(100, 5, '', 0, 1); //end line
 
 $pdf->SetFont('', '', 12);
 $pdf->Cell(2, 5, '', 0, 0);

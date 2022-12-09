@@ -35,7 +35,7 @@ class loginconfig
                   $stm ->execute();
                   $stm ->fetchAll();
 
-            }catch(Exeption $e)
+            }catch(Exception $e)
             {
                   return $e -> getMessage();
             }
@@ -63,7 +63,7 @@ class loginconfig
                         false;
                   }
 
-            }catch(Exeption $e)
+            }catch(Exception $e)
             {
                   return $e -> getMessage();
             }
@@ -73,7 +73,3 @@ class loginconfig
 
 
 }
-
-
-
-?>
