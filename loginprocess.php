@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['email']) && isset($_POST['password']))
+if(isset($_POST['email']))
 {
       require_once("loginConfig.php");
       $info =new loginconfig();
@@ -13,7 +13,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
 
       }else
       {
-            header('location:register.php');
+            header('location:login.php?message=please fill all boxes&&color=border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700');
 
       }
 }

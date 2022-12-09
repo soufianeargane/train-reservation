@@ -50,10 +50,12 @@ class loginconfig
                   if(count($user)>0 && password_verify($this->password,$user[0]['password']) == true)
                   {
                         session_start();
-
                         $_SESSION['id'] = $user[0]['id'];
                         $_SESSION['email'] = $user[0]['email'];
                         $_SESSION['password'] =$user[0]['password'];
+                        $_SESSION['role'] = $user[0]['role'];
+                        $a1 = explode("@", $_SESSION['email']);
+                        $_SESSION['username'] =$a1[0];
                         return true;
 
                   }else 
