@@ -48,7 +48,7 @@
 
                         <input class="p-3 border bg-[#B9E0FF] shadow-lg font-bold rounded-xl hover:scale-105 duration-300 " type="submit" value="LOGIN">
 
-                        <p class="text-white lg:mt-4 md:mt-0">Don't have an accout ?<a href="../Register.php" class="text-[#B9E0FF] font-bold hover:text-white "> Register here</a></p>
+                        <p class="text-white lg:mt-4 md:mt-0">Don't have an accout ?<a href="./Register.php" class="text-[#B9E0FF] font-bold hover:text-white "> Register here</a></p>
                     </form>
 
             </div>

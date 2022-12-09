@@ -9,6 +9,8 @@ if(isset($_POST["promoteBtnUser"])){
     $user = new promoteUser();
     $user->promote($idOfUser);
 
+    header("location:./users.php");
+
 
 
 }
