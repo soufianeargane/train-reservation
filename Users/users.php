@@ -4,7 +4,7 @@ include "../config/db.php";
 include "../Crud-station/crud-station-controle-classes.php";
 include "../Classes/cities.php";
 
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +48,7 @@ include "../Classes/cities.php";
                                 </button>
                                 <ul id="dropdown-example2" class="py-2 space-y-2">
                                     <li>
-                                        <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <a href="../Account/account.php" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                             <iconify-icon icon="material-symbols:switch-account" style="color: #9ca3af;" width="25" height="25"></iconify-icon>
                                             <span class="flex-1 ml-3 whitespace-nowrap">Account</span>
                                         </a>
@@ -159,7 +159,7 @@ include "../Classes/cities.php";
                             </button>
                             <ul id="dropdown-example" class="py-2 space-y-2">
                                 <li>
-                                    <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <a href="../Account/account.php" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <iconify-icon icon="material-symbols:switch-account" style="color: #9ca3af;" width="25" height="25"></iconify-icon>
                                         <span class="flex-1 ml-3 whitespace-nowrap">Account</span>
                                     </a>

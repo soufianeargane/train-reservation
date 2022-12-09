@@ -1,3 +1,7 @@
+
+<?php 
+$fetch = new cities();
+
 <?php
 //call the method that will fetch all the citie from ville table , so we can use it select
 $fetch = new cities();

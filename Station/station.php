@@ -9,9 +9,6 @@ $all = $data->fetchAllTables();
 $fetch2 = new cities();
 //call the method that will fetch all the citie from ville table , so we can use it select
 $allCities2 = $fetch2->fetchCities();
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +52,7 @@ $allCities2 = $fetch2->fetchCities();
                                 </button>
                                 <ul id="dropdown-example2" class="py-2 space-y-2">
                                     <li>
-                                        <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <a href="../Account/account.php" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                             <iconify-icon icon="material-symbols:switch-account" style="color: #9ca3af;" width="25" height="25"></iconify-icon>
                                             <span class="flex-1 ml-3 whitespace-nowrap">Account</span>
                                         </a>
@@ -165,7 +162,7 @@ $allCities2 = $fetch2->fetchCities();
                             </button>
                             <ul id="dropdown-example" class="py-2 space-y-2">
                                 <li>
-                                    <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <a href="../Account/account.php" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <iconify-icon icon="material-symbols:switch-account" style="color: #9ca3af;" width="25" height="25"></iconify-icon>
                                         <span class="flex-1 ml-3 whitespace-nowrap">Account</span>
                                     </a>
@@ -268,21 +265,18 @@ $allCities2 = $fetch2->fetchCities();
                 <tbody>
                     <?php
                     foreach ($all as $val) {
-
                         echo '
                         <form action="../Crud-station/crud-station-db.php" method="post">
                             <tr>
                                 <input type="hidden" name="idOfStation" value="' . $val["id_station"] . '">
-                                <input type="hidden" name="cityOfStation" value="' . $val["id"] . '">
-
                                 
 
                                 <td class="border border-slate-700 ...">' . $val["id_station"] . '</td>
                                 <td class="border border-slate-700 ..."><input class ="text-center border-none p-0 w-full" name="nameOfStation" type="text" value="' . $val["name"] . '"></td>
-                                
                                 <td class="border border-slate-700 ...">
                                 <select id="" name="cityOfStation" placeholder="City ..." class="text-center border-none p-0 w-full" required>
-                                <option selected value="' . $val["id"] . '">' . $val["ville"] . '</option>'; ?>
+                                <option selected value="'.$val["id"].'">' . $val["ville"] . '</option>'; ?>
+
 
                     <?php
 
@@ -301,13 +295,10 @@ $allCities2 = $fetch2->fetchCities();
                                 <td class="border border-slate-700 ">
                                     <div class="flex flex-wrap gap-2 py-2 justify-center">
                                             <button type="submit" name="updateBtnStation" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
-                                            <button type="submit" name="deleteBtnStation" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                                            <button type="submit" name="deleteBtnStation" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
                                     </div>
                                 </td>
                             </tr>
-
-                       
-
                         </form> ';
                     };
 
@@ -393,6 +384,4 @@ $allCities2 = $fetch2->fetchCities();
         $("#to").select2();
     });
 </script>
-
-
 </html>

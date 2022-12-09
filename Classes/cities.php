@@ -3,7 +3,6 @@ include_once '../config/db.php';
 class cities extends Dbcon
 {
 
-
     public function fetchCities()
     {
 
@@ -11,6 +10,5 @@ class cities extends Dbcon
 
         $stmt->execute();
         return $stmt->fetchAll();
-
     }
 }
