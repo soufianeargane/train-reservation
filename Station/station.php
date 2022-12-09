@@ -279,12 +279,10 @@ $allCities2 = $fetch2->fetchCities();
 
                                 <td class="border border-slate-700 ...">' . $val["id_station"] . '</td>
                                 <td class="border border-slate-700 ..."><input class ="text-center border-none p-0 w-full" name="nameOfStation" type="text" value="' . $val["name"] . '"></td>
-
-                                <td class="border border-slate-700 ..."><input class ="text-center border-none p-0 w-full" name="cityOfStation" type="text" value="' . $val["ville"] . '"></td>
                                 
                                 <td class="border border-slate-700 ...">
                                 <select id="" name="cityOfStation" placeholder="City ..." class="text-center border-none p-0 w-full" required>
-                                <option selected value="'.$val["id"].'">' . $val["ville"] . '</option>'; ?>
+                                <option selected value="' . $val["id"] . '">' . $val["ville"] . '</option>'; ?>
 
                     <?php
 
@@ -398,4 +396,3 @@ $allCities2 = $fetch2->fetchCities();
 
 
 </html>
-

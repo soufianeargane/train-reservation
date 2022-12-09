@@ -1,4 +1,3 @@
-
 <?php
 include "../config/db.php";
 include "../Crud-station/crud-station-controle-classes.php";
@@ -18,6 +17,7 @@ include "../Classes/cities.php";
 
     <!-- Tailwind -->
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <!-- some css -->
 </head>
 
 <body class="mainBody">
@@ -250,7 +250,7 @@ include "../Classes/cities.php";
                 <thead>
                     <tr>
                         <th class="border border-slate-600 ...">#</th>
-                        <th class="border border-slate-600 ...">Train-Id</th>
+                        <th class="border border-slate-600 ...">Train name</th>
                         <th class="border border-slate-700 ...">From</th>
                         <th class="border border-slate-600 ...">To</th>
                         <th class="border border-slate-600 ...">Price</th>
@@ -265,25 +265,35 @@ include "../Classes/cities.php";
                     $data = new trip();
                     $rows = $data->fetchAllTrips();
                     $i = 1;
+                    $fetch4 = new cities();
+                    $allCities4 = $fetch4->fetchCities();
                     foreach ($rows as $row) {
                     ?>
                         <tr>
-                            <td class="border border-slate-700 ..."><?php echo ($i++) ?></td>
-                            <td class="border border-slate-700 ..."><?php echo $row['train_id'] ?></td>
-                            <td class="border border-slate-700 ..."><?php echo $row['station_start_id'] ?> <br> at <?php echo $row['starting_time'] ?></td>
-                            <td class="border border-slate-700 ..."><?php echo $row['station_arrive_id'] ?> <br> at <?php echo $row['arriving_time'] ?></td>
+                            <td class="border border-slate-700 ..."> <?php echo ($i++) ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $row['name'] ?></td>
+                            <td class="border border-slate-700 ...">
+                                <strong><?php echo $row['start'] ?></strong>
+                                <br>
+                                at <?php echo $row['starting_time'] ?>
+                            </td>
+                            <td class="border border-slate-700 ...">
+                                <strong><?php echo $row['end'] ?> </strong>
+                                <br> at <?php echo $row['arriving_time'] ?>
+                            </td>
                             <td class="border border-slate-700 ..."><?php echo $row['price'] ?>dhs</td>
-
                             <td class="border border-slate-700 ">
                                 <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
-                                    <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                                    <a href="edit.php?id=<?php echo $row['id_trip'] ?>" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Edit</a>
+                                    <form action="../controllers/trip_controller.php" method="POST">
+                                        <input type="hidden" name="id_trip" value="<?php echo $row['id_trip'] ?>">
+                                        <button type="submit" name="delete_trip" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+                                    </form>
                                 </div>
                             </td>
                         <?php  } ?>
                         </tr>
                 </tbody>
-
                 <!-- The link from where i got this code -->
                 <!-- https://tailwindcomponents.com/component/cookie-banner-tailwind-css-alpine-js -->
                 <div x-data="{ open: true }" class="" id="popUp">
@@ -321,12 +331,6 @@ include "../Classes/cities.php";
     include "../modals.php";
     ?>
 
-
-
-
-
-
-
 </body>
 
 <!-- Tailwind -->
@@ -352,9 +356,9 @@ include "../Classes/cities.php";
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     $(function() {
-        $("#country").select2();
+        $(".from").select2();
+        $("#to").select2();
     });
 </script>
-
 
 </html>

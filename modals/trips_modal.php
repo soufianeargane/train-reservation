@@ -79,9 +79,41 @@ class trip extends Dbcon
     //fetch all data
     public function fetchAllTrips()
     {
-        $stmt = $this->connect()->prepare("SELECT * FROM `trips`");
+        $stmt = $this->connect()->prepare("SELECT trips.* , 
+        v_start.ville as start , s_end.ville as end, train.name as name FROM trips 
+        inner join ville as v_start on v_start.id=trips.station_start_id 
+        inner join ville as s_end on s_end.id=trips.station_arrive_id 
+        INNER JOIN train on trips.train_id = train.id_train
+        ");
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
+    }
+    //fetch single data
+    public function fetchSingleTrip()
+    {
+        $stmt = $this->connect()->prepare("SELECT trips.* , 
+        v_start.ville as start , s_end.ville as end, train.name as name FROM trips 
+        inner join ville as v_start on v_start.id=trips.station_start_id 
+        inner join ville as s_end on s_end.id=trips.station_arrive_id 
+        INNER JOIN train on trips.train_id = train.id_train WHERE id_trip=?");
+        $stmt->execute([$this->id_trip]);
+        $result = $stmt->fetch();
+        return $result;
+    }
+    // delete data
+    public function deleteTrip()
+    {
+        $stmt = $this->connect()->prepare("DELETE FROM `trips` WHERE id_trip=?");
+        $stmt->execute([$this->id_trip]);
+    }
+
+    // update data
+    public function updateTrip()
+    {
+        $stmt = $this->connect()->prepare("UPDATE `trips` 
+                SET `train_id`=?,`station_start_id`=?,`station_arrive_id`=?,
+                `starting_time`=?,`price`=?,`arriving_time`=? WHERE id_trip=?");
+        $stmt->execute([$this->train_id, $this->station_start_id, $this->station_arrive_id, $this->starting_time, $this->price, $this->arriving_time, $this->id_trip]);
     }
 }
