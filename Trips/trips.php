@@ -1,6 +1,4 @@
 <?php
-include "../config/db.php";
-include "../Crud-station/crud-station-controle-classes.php";
 include "../Classes/cities.php";
 
 ?>
@@ -265,8 +263,8 @@ include "../Classes/cities.php";
                     $data = new trip();
                     $rows = $data->fetchAllTrips();
                     $i = 1;
-                    $fetch4 = new cities();
-                    $allCities4 = $fetch4->fetchCities();
+                    // $fetch4 = new cities();
+                    // $allCities4 = $fetch4->fetchCities();
                     foreach ($rows as $row) {
                     ?>
                         <tr>
