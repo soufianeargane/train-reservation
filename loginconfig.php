@@ -5,71 +5,66 @@ class loginconfig
       private $name;
       private $email;
       private $password;
-      public function __construct($email="",$password="")
+      public function __construct($email = "", $password = "")
       {
-            $this ->email = $email;
-            $this ->password = $password;
-            $this ->dbcon = new PDO("mysql:host=localhost;dbname=sgtt", 'root', '');
+            $this->email = $email;
+            $this->password = $password;
+            $this->dbcon = new PDO("mysql:host=localhost;dbname=sgtt", 'root', '');
       }
       public function setemail($email)
       {
-            $this ->email = $email;
+            $this->email = $email;
       }
       public function getemail()
       {
-            return $this -> email;
+            return $this->email;
       }
       public function setpass($password)
       {
-            $this ->password = $password;
-      }   
+            $this->password = $password;
+      }
       public function getpass()
       {
-            return $this -> password;
+            return $this->password;
+
       }
 
       public function fetchAll()
       {
-            try{
-                  $stm =$this -> dbcon->prepare("select * FROM user");
-                  $stm ->execute();
-                  $stm ->fetchAll();
 
-            }catch(Exception $e)
-            {
-                  return $e -> getMessage();
+            try {
+                  $stm = $this->dbcon->prepare("select * FROM user");
+                  $stm->execute();
+                  $stm->fetchAll();
+            } catch (Exception $e) {
+                  return $e->getMessage();
+
             }
       }
 
       public function login()
       {
-            try{
-                  $stm =$this -> dbcon -> prepare("SELECT * FROM user where email = :email");
-                  $stm ->execute(['email' => $this->email]);
-                  $user = $stm -> fetchAll();
-                  if(count($user)>0 && password_verify($this->password,$user[0]['password']) == true)
-                  {
+
+            try {
+                  $stm = $this->dbcon->prepare("SELECT * FROM user where email = :email");
+                  $stm->execute(['email' => $this->email]);
+                  $user = $stm->fetchAll();
+                  if (count($user) > 0 && password_verify($this->password, $user[0]['password']) == true) {
                         session_start();
                         $_SESSION['id'] = $user[0]['id'];
                         $_SESSION['email'] = $user[0]['email'];
-                        $_SESSION['password'] =$user[0]['password'];
+                        $_SESSION['name'] = $user[0]['name'];
+                        $_SESSION['password'] = $user[0]['password'];
                         $_SESSION['role'] = $user[0]['role'];
                         $a1 = explode("@", $_SESSION['email']);
-                        $_SESSION['username'] =$a1[0];
+                        $_SESSION['username'] = $a1[0];
                         return true;
-
-                  }else 
-                  {
+                  } else {
                         false;
                   }
-
-            }catch(Exception $e)
-            {
-                  return $e -> getMessage();
+            } catch (Exception $e) {
+                  return $e->getMessage();
             }
       }
-
-
-
 
 }

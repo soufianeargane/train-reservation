@@ -1,10 +1,16 @@
-
 <?php
 include "../config/db.php";
 include "../Crud-station/crud-station-controle-classes.php";
 include "../Classes/cities.php";
+include "../Classes/fetchusers.php";
+
+
+$user = new users();
+$data = $user->fetchRegularUsers();
+
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -251,7 +257,7 @@ include "../Classes/cities.php";
 
 
 
-        <!-- =====================Table of stations===================== -->
+        <!-- =====================Table of Users===================== -->
         <div class="w-full  ">
             <table class=" text-center border-separate border-spacing-2 border border-slate-500 w-full">
                 <thead class="">
@@ -259,239 +265,31 @@ include "../Classes/cities.php";
                         <th class="border border-slate-600 ...">#</th>
                         <th class="border border-slate-600 ...">Name</th>
                         <th class="border border-slate-700 ...">Email</th>
-                        <th class="border border-slate-600 ...">Rank</th>
                         <th class="border border-slate-600 ...">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php 
+                    foreach($data as $row){
+                    ?>
+                    <form action="promote-db.php" method="post">
                     <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
+                        <input type="hidden" name="idOfUser" value="<?php echo $row["id"] ?>">
+                        <td class="border border-slate-700 ..."><?php echo $row["id"] ?></td>
+                        <td class="border border-slate-700 ..."><?php echo $row["name"] ?></td>
+                        <td class="border border-slate-700 ..."><?php echo $row["email"] ?></td>
 
                         <td class="border border-slate-700 ">
                             <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
+                                <button type="submit" name="promoteBtnUser" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
                             </div>
                         </td>
 
                     </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Anass Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
+                    </form>
 
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Soufiane Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">Admin</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Demote</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Anass Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
-
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Soufiane Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">Admin</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Demote</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Anass Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
-
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Soufiane Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">Admin</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Demote</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Anass Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
-
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Soufiane Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">Admin</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Demote</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Anass Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
-
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Soufiane Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">Admin</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Demote</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Anass Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">User</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
-
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Soufiane Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                        <td class="border border-slate-700 ...">Admin</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Demote</button>
-                            </div>
-                        </td>
-                    </tr>
+                    <?php }?>
+                    
 
                 </tbody>
 

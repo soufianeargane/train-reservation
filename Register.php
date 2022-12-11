@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="validation.js">
+
+    <script src="validation.js"></script>
     <title>Document</title>
     <link rel="stylesheet" href="styll.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -19,6 +20,13 @@
             
            
             <div class="md:w-1/2  px-16 py-6"> 
+
+                <?php 
+                session_start();
+                if(isset($_SESSION["messageOfValidationOfEmail"])){
+                    echo $_SESSION["messageOfValidationOfEmail"];
+                } 
+                ?>
                 <h2 class="font-bold text-3xl text-white ml-2 ">Sign up</h3>
                 <form action="signupprocess.php" method = "POST" class="flex flex-col gap-4" 	data-parsley-ui-enabled="true" data-parsley-validate="">
                 
