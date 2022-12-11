@@ -1,6 +1,8 @@
 <?php
+
 include "../CRUDTRAIN/CrudTrain.php";
-// include "../config/db.php";
+include "../config/db.php";
+
 include "../Crud-station/crud-station-controle-classes.php";
 include "../Classes/cities.php";
 
@@ -246,6 +248,7 @@ include "../Classes/cities.php";
         </div>
 
         <!-- =====================Table of stations===================== -->
+
       
         <div class="w-full ">
             <table class="text-center border-separate border-spacing-2 border border-slate-500 w-full">
@@ -260,6 +263,7 @@ include "../Classes/cities.php";
                     </tr>
                 </thead>
                 <tbody>
+
                     <?php
 
                     foreach($all_data as $valu){
@@ -276,9 +280,9 @@ include "../Classes/cities.php";
                         </td>
 
 
-
                         <td class="border border-slate-700 ">
                             <div class="flex flex-wrap gap-2 py-2 justify-center">
+
                                 <button type="submit" name="update" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
 
 
@@ -286,7 +290,6 @@ include "../Classes/cities.php";
 
                             </div>
                         </td>
-
 
                     </tr>';
                 }
@@ -298,7 +301,6 @@ include "../Classes/cities.php";
 
                 </tbody>
             </form>
-
                 <!-- The link from where i got this code -->
                 <!-- https://tailwindcomponents.com/component/cookie-banner-tailwind-css-alpine-js -->
                 <div x-data="{ open: true }" class="" id="popUp">
