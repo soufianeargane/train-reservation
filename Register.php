@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script src="validation.js"></script>
     <title>Document</title>
     <link rel="stylesheet" href="styll.css">
@@ -19,6 +20,7 @@
             
            
             <div class="md:w-1/2  px-16 py-6"> 
+
                 <?php 
                 session_start();
                 if(isset($_SESSION["messageOfValidationOfEmail"])){

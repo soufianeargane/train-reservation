@@ -26,21 +26,25 @@ class loginconfig
       public function getpass()
       {
             return $this->password;
+
       }
 
       public function fetchAll()
       {
+
             try {
                   $stm = $this->dbcon->prepare("select * FROM user");
                   $stm->execute();
                   $stm->fetchAll();
             } catch (Exception $e) {
                   return $e->getMessage();
+
             }
       }
 
       public function login()
       {
+
             try {
                   $stm = $this->dbcon->prepare("SELECT * FROM user where email = :email");
                   $stm->execute(['email' => $this->email]);
@@ -62,4 +66,5 @@ class loginconfig
                   return $e->getMessage();
             }
       }
+
 }

@@ -1,5 +1,8 @@
 <?php
+
+include "../CRUDTRAIN/CrudTrain.php";
 include "../config/db.php";
+
 include "../Crud-station/crud-station-controle-classes.php";
 include "../Classes/cities.php";
 
@@ -245,93 +248,59 @@ include "../Classes/cities.php";
         </div>
 
         <!-- =====================Table of stations===================== -->
+
+      
         <div class="w-full ">
             <table class="text-center border-separate border-spacing-2 border border-slate-500 w-full">
+             <form action="../CRUDTRAIN/CrudTrain.php" method="post">
+
                 <thead>
                     <tr>
-                        <th class="border border-slate-600 ...">#</th>
+                        <!-- <th class="border border-slate-600 ...">#</th> -->
                         <th class="border border-slate-600 ...">Train</th>
-                        <th class="border border-slate-700 ...">Seats</th>
-                        <th class="border border-slate-600 ...">From</th>
-                        <th class="border border-slate-600 ...">To</th>
+                       
                         <th class="border border-slate-600 ...">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Indianapolis</td>
 
-                        <td class="border border-slate-700 ...">10/50</td>
-                        <td class="border border-slate-700 ...">Oujda</td>
-                        <td class="border border-slate-700 ...">Tourirt</td>
+                    <?php
+
+                    foreach($all_data as $valu){
+                    
+                   
+                    
+
+                    echo '<tr>
+                       
+                        
+                        <td class="border border-slate-700 ...">
+                            <input name="id_trainn" type="hidden" value="'.$valu["id_train"].'">
+                            <input class="border-0" type="text" name="Name_update" value="'.$valu["name"].'">
+                        </td>
 
 
                         <td class="border border-slate-700 ">
                             <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+
+                                <button type="submit" name="update" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
+
+
+                                <a href="?id_train='.$valu['id_train'].'" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</a>
+
                             </div>
                         </td>
 
-                    </tr>
+                    </tr>';
+                }
+                    ?>
+                    
 
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Columbus</td>
-                        <td class="border border-slate-700 ...">10/50</td>
-                        <td class="border border-slate-700 ...">Fes</td>
-                        <td class="border border-slate-700 ...">Taourirt</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
-                            </div>
-                        </td>
-
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Detroit</td>
-                        <td class="border border-slate-700 ...">10/50</td>
-                        <td class="border border-slate-700 ...">Tourirt</td>
-                        <td class="border border-slate-700 ...">CasaBlanca</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">4</td>
-                        <td class="border border-slate-700 ...">Detroit</td>
-                        <td class="border border-slate-700 ...">10/50</td>
-                        <td class="border border-slate-700 ...">Tourirt</td>
-                        <td class="border border-slate-700 ...">CasaBlanca</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">5</td>
-                        <td class="border border-slate-700 ...">Detroit</td>
-                        <td class="border border-slate-700 ...">10/50</td>
-                        <td class="border border-slate-700 ...">Tourirt</td>
-                        <td class="border border-slate-700 ...">CasaBlanca</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
+              
+                   
 
                 </tbody>
+            </form>
                 <!-- The link from where i got this code -->
                 <!-- https://tailwindcomponents.com/component/cookie-banner-tailwind-css-alpine-js -->
                 <div x-data="{ open: true }" class="" id="popUp">
