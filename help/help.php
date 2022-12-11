@@ -1,3 +1,4 @@
+
 <?php
 include "../config/db.php";
 include "../Crud-station/crud-station-controle-classes.php";
@@ -248,7 +249,6 @@ include "../Classes/cities.php";
                     <tr>
                         <th class="border border-slate-600 ...">ShortKet</th>
                         <th class="border border-slate-600 ...">What is do</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -264,7 +264,6 @@ include "../Classes/cities.php";
                         <td class="border border-slate-700 ...">Shift + v</td>
                         <td class="border border-slate-700 ...">For Trips</td>
                     </tr>
-
                 </tbody>
                 <!-- The link from where i got this code -->
                 <!-- https://tailwindcomponents.com/component/cookie-banner-tailwind-css-alpine-js -->
