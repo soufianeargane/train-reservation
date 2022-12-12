@@ -2,17 +2,15 @@
 
 <?php
 
- include "../config/db.php";
-
-
+include "../Classes/cities.php";
 class Train extends Dbcon
 {
 
     private $id_train;
     private $Name_train;
-  
 
-    
+
+
     public function setIdTrain($id_train)
     {
         $this->id_train = $id_train;
@@ -33,12 +31,12 @@ class Train extends Dbcon
         return $this->Name_train;
     }
 
-    
+
 
     public function InsertData()
     {
         $stm = $this->connect()->prepare("INSERT INTO `train`(`name`) VALUES (?)");
-        $stm ->execute([$this->Name_train]);
+        $stm->execute([$this->Name_train]);
     }
 
 
@@ -47,16 +45,15 @@ class Train extends Dbcon
         $stm = $this->connect()->prepare("SELECT * FROM `train`");
         $stm->execute();
         return $stm->fetchAll();
-        
     }
 
-  
+
 
     public function update()
     {
         $stm = $this->connect()->prepare("UPDATE `train` SET `name`=? WHERE id_train=?");
 
-        $stm->execute([$this->Name_train,$this->id_train]);
+        $stm->execute([$this->Name_train, $this->id_train]);
     }
 
     public function delete()
@@ -77,12 +74,11 @@ if (isset($_POST["Add_train"])) {
 
     $New_train = new train();
     $New_train->setNameTrain($Name_train);
-    
+
     $New_train->InsertData();
 
-   
-    header("location:../Train/train.php");
 
+    header("location:../Train/train.php");
 }
 
 
@@ -90,7 +86,7 @@ if (isset($_POST["Add_train"])) {
 
 $show_data  =   new train();
 
-$all_data   =   $show_data -> ShowAllData();
+$all_data   =   $show_data->ShowAllData();
 
 
 if (isset($_GET["id_train"])) {
@@ -99,24 +95,23 @@ if (isset($_GET["id_train"])) {
 
     $deleteTrain = new Train();
 
-    $deleteTrain -> setIdTrain($_GET["id_train"]);
+    $deleteTrain->setIdTrain($_GET["id_train"]);
 
-    $deleteTrain -> delete();
+    $deleteTrain->delete();
 
-   
+
     header("location: ../Train/train.php");
-
 }
-if (isset($_POST["update"])){
+if (isset($_POST["update"])) {
 
     $Name_update = new Train();
 
-    $Name_update -> setIdTrain($_POST["id_trainn"]);
+    $Name_update->setIdTrain($_POST["id_trainn"]);
 
-    $Name_update -> setNameTrain($_POST["Name_update"]);
+    $Name_update->setNameTrain($_POST["Name_update"]);
 
-    $Name_update ->update();
-    
+    $Name_update->update();
+
     header("location: ../Train/train.php");
 }
 

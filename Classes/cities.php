@@ -1,4 +1,5 @@
 <?php
+
 include '../config/db.php';
 class cities extends Dbcon
 {

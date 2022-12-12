@@ -1,4 +1,5 @@
 <?php
+session_start();
 //If the save button of station modal has been pressed
 if (isset($_POST["addBtnStation"])) {
 
@@ -16,7 +17,7 @@ if (isset($_POST["addBtnStation"])) {
     //go back to the previous page
     //https://stackoverflow.com/questions/5285031/back-to-previous-page-with-header-location-in-php
     // header("location:javascript://history.go(-1);");
-    header("location:../Station/station.php");
+    header("location:" . $_SESSION["URLNNOW"]);
 }
 
 if (isset($_POST["deleteBtnStation"])) {
