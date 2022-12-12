@@ -14,7 +14,16 @@
 
 <body style="position: static;overflow-y: scroll;">
 
-      <?php
+<?php
+      
+      include './ticketsconfiguration.php';
+
+      $ticket = new configtickets();
+ 
+      $ticketcustomer=array();
+      $ticketcustomer = $ticket->fetchtickets($_SESSION['date']);
+      var_dump($ticketcustomer);
+   
       session_start();
       echo "Welcome " . " " . $_SESSION['username'];
       ?>
@@ -147,7 +156,7 @@
                               <div class=" rounded-md sm:h-5 flex justify-between items-center divide-slate-200 bg-slate-100 sm:py-14">
                                     <div class="text-lg pl-8">
                                           <ion-icon name="calendar-outline"></ion-icon>
-                                          <span class="font-medium">Mon 5 dec 2022</span>
+                                          <span class="font-medium">Mon <?php echo date("Y/m/d") ?></span>
                                     </div>
                                     <div>
                                           <span class="text-lg pl-0">Standar</span>
@@ -157,227 +166,52 @@
                                     </div>
                               </div>
                               <!-- other part-->
+                        <?php
+                              foreach($ticketcustomer as $fetche) {
+                              ?>
+                               <div class="flex justify-between w-full block  px-4  border  sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                               <div>
+                                     <div class="flex space-x-2 inline-block text-xl font-extrabold items-center">
+                                           <span><?php echo $fetche['starting_time'] ?></span>
+                                           <ion-icon name="arrow-forward-outline"></ion-icon>
+                                           <span><?php echo $fetche['arriving_time'] ?></span>
+                                     </div>
+                                     <div class="pt-2 font-thin text-sm">
+                                           <span class="font-mono">1h 56m, 0 changes</span>
+                                     </div>
+                                     <div class="flex ">
+                                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
+                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
+                                           </svg>
 
-                              <div class="flex justify-between w-full block  px-4  border  sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                                    <div>
-                                          <div class="flex space-x-2 inline-block text-xl font-extrabold items-center">
-                                                <span>11:00</span>
-                                                <ion-icon name="arrow-forward-outline"></ion-icon>
-                                                <span>12:56</span>
-                                          </div>
-                                          <div class="pt-2 font-thin text-sm">
-                                                <span class="font-mono">1h 56m, 0 changes</span>
-                                          </div>
-                                          <div class="flex ">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-                                                </svg>
+                                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-8 w-6 h-8">
+                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
+                                           </svg>
 
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-8 w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
-                                                </svg>
+                                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
+                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                                           </svg>
 
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                                                </svg>
+                                     </div>
+                               </div>
 
-                                          </div>
-                                    </div>
-
-                                    <span class="px-2 ">
-                                          <img src="./images/oncf.png" alt="">
-                                    </span>
-
-
-                                    <div class=" pr-7 block">
-                                          <h6 class="text-xl font-mono ">$66.22</h6>
-                                          <h6 class="font-thin text-orange-500">only 6 left </h6>
-                                    </div>
+                               <span class="px-2 ">
+                                     <img src="./images/oncf.png" alt="">
+                               </span>
 
 
-                                    <div class=" px-1 block">
-                                          <h6 class="text-xl font-mono ">$106.22</h6>
-                                    </div>
-                              </div>
-
-                              <div class="flex justify-between w-full block  px-4  border  sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                                    <div>
-                                          <div class="flex space-x-2 inline-block text-xl font-extrabold items-center">
-                                                <span>11:00</span>
-                                                <ion-icon name="arrow-forward-outline"></ion-icon>
-                                                <span>12:56</span>
-                                          </div>
-                                          <div class="pt-2 font-thin text-sm">
-                                                <span class="font-mono">1h 56m, 0 changes</span>
-                                          </div>
-                                          <div class="flex ">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-                                                </svg>
-
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-8 w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
-                                                </svg>
-
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                                                </svg>
-
-                                          </div>
-                                    </div>
-
-                                    <span class="px-2 ">
-                                          <img src="./images/oncf.png" alt="">
-                                    </span>
+                               <div class=" pr-7 block">
+                                     <h6 class="text-xl font-mono ">$66.22</h6>
+                                     <h6 class="font-thin text-orange-500">only 6 left </h6>
+                               </div>
 
 
-                                    <div class=" pr-7 block">
-                                          <h6 class="text-xl font-mono ">$66.22</h6>
-                                          <h6 class="font-thin text-orange-500">only 6 left </h6>
-                                    </div>
-
-
-                                    <div class=" px-1 block">
-                                          <h6 class="text-xl font-mono ">$106.22</h6>
-                                    </div>
-                              </div>
-
-
-                              <div class="flex justify-between w-full block  px-4  border  sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                                    <div>
-                                          <div class="flex space-x-2 inline-block text-xl font-extrabold items-center">
-                                                <span>11:00</span>
-                                                <ion-icon name="arrow-forward-outline"></ion-icon>
-                                                <span>12:56</span>
-                                          </div>
-                                          <div class="pt-2 font-thin text-sm">
-                                                <span class="font-mono">1h 56m, 0 changes</span>
-                                          </div>
-                                          <div class="flex ">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-                                                </svg>
-
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-8 w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
-                                                </svg>
-
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                                                </svg>
-
-                                          </div>
-                                    </div>
-
-                                    <span class="px-2 ">
-                                          <img src="./images/oncf.png" alt="">
-                                    </span>
-
-
-                                    <div class=" pr-7 block">
-                                          <h6 class="text-xl font-mono ">$66.22</h6>
-                                          <h6 class="font-thin text-orange-500">only 6 left </h6>
-                                    </div>
-
-
-                                    <div class=" px-1 block">
-                                          <h6 class="text-xl font-mono ">$106.22</h6>
-                                    </div>
-                              </div>
-
-                              <div class="flex justify-between w-full block  px-4  border  sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                                    <div>
-                                          <div class="flex space-x-2 inline-block text-xl font-extrabold items-center">
-                                                <span>11:00</span>
-                                                <ion-icon name="arrow-forward-outline"></ion-icon>
-                                                <span>12:56</span>
-                                          </div>
-                                          <div class="pt-2 font-thin text-sm">
-                                                <span class="font-mono">1h 56m, 0 changes</span>
-                                          </div>
-                                          <div class="flex ">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-                                                </svg>
-
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-8 w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
-                                                </svg>
-
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                                                </svg>
-
-                                          </div>
-                                    </div>
-
-                                    <span class="px-2 ">
-                                          <img src="./images/oncf.png" alt="">
-                                    </span>
-
-
-                                    <div class=" pr-7 block">
-                                          <h6 class="text-xl font-mono ">$66.22</h6>
-                                          <h6 class="font-thin text-orange-500">only 6 left </h6>
-                                    </div>
-
-
-                                    <div class=" px-1 block">
-                                          <h6 class="text-xl font-mono ">$106.22</h6>
-                                    </div>
-                              </div>
-
-
-
-
-
-
-
-
-
-
-
-                              <div class="flex justify-between w-full block  px-4  border  sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                                    <div>
-                                          <div class="flex space-x-2 inline-block text-xl font-extrabold items-center">
-                                                <span>11:00</span>
-                                                <ion-icon name="arrow-forward-outline"></ion-icon>
-                                                <span>12:56</span>
-                                          </div>
-                                          <div class="pt-2 font-thin text-sm">
-                                                <span class="font-mono">1h 56m, 0 changes</span>
-                                          </div>
-                                          <div class="flex ">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-                                                </svg>
-
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-8 w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
-                                                </svg>
-
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
-                                                      <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                                                </svg>
-
-                                          </div>
-                                    </div>
-
-                                    <span class="px-2 ">
-                                          <img src="./images/oncf.png" alt="">
-                                    </span>
-
-
-                                    <div class=" pr-7 block">
-                                          <h6 class="text-xl font-mono ">$66.22</h6>
-                                          <h6 class="font-thin text-orange-500">only 6 left </h6>
-                                    </div>
-
-
-                                    <div class=" px-1 block">
-                                          <h6 class="text-xl font-mono ">$106.22</h6>
-                                    </div>
-                              </div>
+                               <div class=" px-1 block">
+                                     <h6 class="text-xl font-mono ">$106.22</h6>
+                               </div>
+                         </div>
+                    
+                         <?php }?>    
 
                         </div>
 
