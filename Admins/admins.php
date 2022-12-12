@@ -1,7 +1,9 @@
 <?php
-include "../config/db.php";
+session_start();
+$_SESSION["URLNNOW"] = $_SERVER['REQUEST_URI'];
+
+include "../CRUDTRAIN/CrudTrain.php";
 include "../Crud-station/crud-station-controle-classes.php";
-include "../Classes/cities.php";
 
 include "../Classes/fetchusers.php";
 
@@ -260,16 +262,16 @@ $data = $user->fetchAdmins();
                     </tr>
                 </thead>
                 <tbody>
-                <?php 
-                    foreach($data as $row){
+                    <?php
+                    foreach ($data as $row) {
                     ?>
-                    <tr>
-                        <td class="border border-slate-700 ..."><?php echo $row["id"] ?></td>
-                        <td class="border border-slate-700 ..."><?php echo $row["name"] ?></td>
-                        <td class="border border-slate-700 ..."><?php echo $row["email"] ?></td>
-                    </tr>
+                        <tr>
+                            <td class="border border-slate-700 ..."><?php echo $row["id"] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $row["name"] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $row["email"] ?></td>
+                        </tr>
 
-                    <?php }?>
+                    <?php } ?>
                 </tbody>
 
                 <!-- The link from where i got this code -->
@@ -344,4 +346,5 @@ $data = $user->fetchAdmins();
         $("#to").select2();
     });
 </script>
+
 </html>

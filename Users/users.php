@@ -1,7 +1,9 @@
 <?php
-include "../config/db.php";
+
+session_start();
+$_SESSION["URLNNOW"] = $_SERVER['REQUEST_URI'];
+include "../CRUDTRAIN/CrudTrain.php";
 include "../Crud-station/crud-station-controle-classes.php";
-include "../Classes/cities.php";
 include "../Classes/fetchusers.php";
 
 
@@ -20,7 +22,7 @@ $data = $user->fetchRegularUsers();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staion</title>
+    <title>Users</title>
     <link rel="stylesheet" href="../Users/style.css">
 
     <!-- Tailwind -->
@@ -269,27 +271,27 @@ $data = $user->fetchRegularUsers();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
-                    foreach($data as $row){
+                    <?php
+                    foreach ($data as $row) {
                     ?>
-                    <form action="promote-db.php" method="post">
-                    <tr>
-                        <input type="hidden" name="idOfUser" value="<?php echo $row["id"] ?>">
-                        <td class="border border-slate-700 ..."><?php echo $row["id"] ?></td>
-                        <td class="border border-slate-700 ..."><?php echo $row["name"] ?></td>
-                        <td class="border border-slate-700 ..."><?php echo $row["email"] ?></td>
+                        <form action="promote-db.php" method="post">
+                            <tr>
+                                <input type="hidden" name="idOfUser" value="<?php echo $row["id"] ?>">
+                                <td class="border border-slate-700 ..."><?php echo $row["id"] ?></td>
+                                <td class="border border-slate-700 ..."><?php echo $row["name"] ?></td>
+                                <td class="border border-slate-700 ..."><?php echo $row["email"] ?></td>
 
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="submit" name="promoteBtnUser" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
-                            </div>
-                        </td>
+                                <td class="border border-slate-700 ">
+                                    <div class="flex flex-wrap gap-2 py-2 justify-center">
+                                        <button type="submit" name="promoteBtnUser" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Promote</button>
+                                    </div>
+                                </td>
 
-                    </tr>
-                    </form>
+                            </tr>
+                        </form>
 
-                    <?php }?>
-                    
+                    <?php } ?>
+
 
                 </tbody>
 

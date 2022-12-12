@@ -1,10 +1,10 @@
 <?php
 
-include "../CRUDTRAIN/CrudTrain.php";
-include "../config/db.php";
+session_start();
+$_SESSION["URLNNOW"] = $_SERVER['REQUEST_URI'];
 
+include "../CRUDTRAIN/CrudTrain.php";
 include "../Crud-station/crud-station-controle-classes.php";
-include "../Classes/cities.php";
 
 ?>
 
@@ -15,7 +15,7 @@ include "../Classes/cities.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staion</title>
+    <title>Train</title>
     <link rel="stylesheet" href="../Train/style.css">
 
     <!-- Tailwind -->
@@ -249,34 +249,34 @@ include "../Classes/cities.php";
 
         <!-- =====================Table of stations===================== -->
 
-      
+
         <div class="w-full ">
             <table class="text-center border-separate border-spacing-2 border border-slate-500 w-full">
-             <form action="../CRUDTRAIN/CrudTrain.php" method="post">
+                <form action="../CRUDTRAIN/CrudTrain.php" method="post">
 
-                <thead>
-                    <tr>
-                        <!-- <th class="border border-slate-600 ...">#</th> -->
-                        <th class="border border-slate-600 ...">Train</th>
-                       
-                        <th class="border border-slate-600 ...">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+                    <thead>
+                        <tr>
+                            <!-- <th class="border border-slate-600 ...">#</th> -->
+                            <th class="border border-slate-600 ...">Train</th>
 
-                    <?php
+                            <th class="border border-slate-600 ...">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    foreach($all_data as $valu){
-                    
-                   
-                    
+                        <?php
 
-                    echo '<tr>
+                        foreach ($all_data as $valu) {
+
+
+
+
+                            echo '<tr>
                        
                         
                         <td class="border border-slate-700 ...">
-                            <input name="id_trainn" type="hidden" value="'.$valu["id_train"].'">
-                            <input class="border-0" type="text" name="Name_update" value="'.$valu["name"].'">
+                            <input name="id_trainn" type="hidden" value="' . $valu["id_train"] . '">
+                            <input class="border-0" type="text" name="Name_update" value="' . $valu["name"] . '">
                         </td>
 
 
@@ -286,21 +286,21 @@ include "../Classes/cities.php";
                                 <button type="submit" name="update" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
 
 
-                                <a href="?id_train='.$valu['id_train'].'" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</a>
+                                <a href="?id_train=' . $valu['id_train'] . '" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</a>
 
                             </div>
                         </td>
 
                     </tr>';
-                }
-                    ?>
-                    
+                        }
+                        ?>
 
-              
-                   
 
-                </tbody>
-            </form>
+
+
+
+                    </tbody>
+                </form>
                 <!-- The link from where i got this code -->
                 <!-- https://tailwindcomponents.com/component/cookie-banner-tailwind-css-alpine-js -->
                 <div x-data="{ open: true }" class="" id="popUp">
