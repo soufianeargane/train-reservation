@@ -1,8 +1,7 @@
-
 <?php
-include "../config/db.php";
+
+include "../CRUDTRAIN/CrudTrain.php";
 include "../Crud-station/crud-station-controle-classes.php";
-include "../Classes/cities.php";
 
 ?>
 
@@ -13,7 +12,7 @@ include "../Classes/cities.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staion</title>
+    <title>Reservation</title>
     <link rel="stylesheet" href="../Tickets/style.css">
 
     <!-- Tailwind -->
@@ -398,7 +397,7 @@ include "../Classes/cities.php";
     </div>
 
     <!-- Include the short cut of all modals -->
-    <?php 
+    <?php
     include "../modals.php";
     ?>
 

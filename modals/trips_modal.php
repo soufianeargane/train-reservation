@@ -1,5 +1,4 @@
 <?php
-include_once '../config/db.php';
 
 class trip extends Dbcon
 {

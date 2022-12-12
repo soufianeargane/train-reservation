@@ -1,7 +1,10 @@
 <?php
-include "../config/db.php";
+session_start();
+$_SESSION["URLNNOW"] = $_SERVER['REQUEST_URI'];
+
+include "../CRUDTRAIN/CrudTrain.php";
 include "../Crud-station/crud-station-controle-classes.php";
-include "../Classes/cities.php";
+
 
 $data = new crudStationConfigue();
 $all = $data->fetchAllTables();
@@ -275,7 +278,7 @@ $allCities2 = $fetch2->fetchCities();
                                 <td class="border border-slate-700 ..."><input class ="text-center border-none p-0 w-full" name="nameOfStation" type="text" value="' . $val["name"] . '"></td>
                                 <td class="border border-slate-700 ...">
                                 <select id="" name="cityOfStation" placeholder="City ..." class="text-center border-none p-0 w-full" required>
-                                <option selected value="'.$val["id"].'">' . $val["ville"] . '</option>'; ?>
+                                <option selected value="' . $val["id"] . '">' . $val["ville"] . '</option>'; ?>
 
 
                     <?php
@@ -384,4 +387,5 @@ $allCities2 = $fetch2->fetchCities();
         $("#to").select2();
     });
 </script>
+
 </html>

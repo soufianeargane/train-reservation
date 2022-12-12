@@ -1,4 +1,5 @@
 <?php
+
 class Dbcon
 {
       public function connect()

@@ -37,8 +37,9 @@
     </style>
 </head>
 <?php
-include '../modals/trips_modal.php';
 include '../Classes/cities.php';
+
+include '../modals/trips_modal.php';
 $trip = new trip();
 $trip->setIdOfTrip($_GET['id']);
 $data = $trip->fetchSingleTrip();

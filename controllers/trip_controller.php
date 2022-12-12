@@ -1,4 +1,5 @@
 <?php
+include('../config/db.php');
 if (isset($_POST['add_trip'])) {
     # code...
     $train_id           = $_POST['train_id'];
