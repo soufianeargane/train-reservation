@@ -1,7 +1,8 @@
 <?php
-include "../config/db.php";
-include "../Crud-station/crud-station-controle-classes.php";
-include "../Classes/cities.php";
+session_start();
+$_SESSION["URLNNOW"] = $_SERVER['REQUEST_URI'];
+
+include "../CRUDTRAIN/CrudTrain.php";
 
 ?>
 
@@ -12,7 +13,7 @@ include "../Classes/cities.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staion</title>
+    <title>Trips</title>
     <link rel="stylesheet" href="../Trips/style.css">
 
     <!-- Tailwind -->
@@ -265,8 +266,8 @@ include "../Classes/cities.php";
                     $data = new trip();
                     $rows = $data->fetchAllTrips();
                     $i = 1;
-                    $fetch4 = new cities();
-                    $allCities4 = $fetch4->fetchCities();
+                    // $fetch4 = new cities();
+                    // $allCities4 = $fetch4->fetchCities();
                     foreach ($rows as $row) {
                     ?>
                         <tr>

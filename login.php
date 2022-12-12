@@ -18,8 +18,10 @@
     <section class="bg-indigo-50 min-h-screen  flex items-center justify-center ">
         <div class="bg-blue-900 flex rounded-xl shadow-lg max-w-6xl p-4">
 
-            <div class="md:block md:flex items-center  hidden w-1/2">
-                <img class=" rounded-xl" src="traavel.jpg" alt="">
+
+            <div class="md:block md:flex items-center w-1/2">
+                <img class="rounded-xl" src="./traavel.jpg" alt="">
+
 
             </div>
             <div class="md:w-1/2  px-16 py-8">
@@ -48,7 +50,9 @@
 
                         <input class="p-3 border bg-[#B9E0FF] shadow-lg font-bold rounded-xl hover:scale-105 duration-300 " type="submit" value="LOGIN">
 
-                        <p class="text-white lg:mt-4 md:mt-0">Don't have an accout ?<a href="Register.php" class="text-[#B9E0FF] font-bold hover:text-white "> Register here</a></p>
+
+                        <p class="text-white lg:mt-4 md:mt-0">Don't have an accout ?<a href="./Register.php" class="text-[#B9E0FF] font-bold hover:text-white "> Register here</a></p>
+
                     </form>
 
             </div>

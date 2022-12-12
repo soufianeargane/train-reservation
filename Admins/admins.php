@@ -1,7 +1,15 @@
 <?php
-include "../config/db.php";
+session_start();
+$_SESSION["URLNNOW"] = $_SERVER['REQUEST_URI'];
+
+include "../CRUDTRAIN/CrudTrain.php";
 include "../Crud-station/crud-station-controle-classes.php";
-include "../Classes/cities.php";
+
+include "../Classes/fetchusers.php";
+
+
+$user = new users();
+$data = $user->fetchAdmins();
 
 ?>
 <!DOCTYPE html>
@@ -243,7 +251,7 @@ include "../Classes/cities.php";
             </aside>
         </div>
 
-        <!-- =====================Table of stations===================== -->
+        <!-- =====================Table of Admins===================== -->
         <div class="w-full ">
             <table class=" text-center border-separate border-spacing-2 border border-slate-500 w-full">
                 <thead>
@@ -254,77 +262,16 @@ include "../Classes/cities.php";
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Anass Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Soufian Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">4</td>
-                        <td class="border border-slate-700 ...">Meriam Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Anass Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Soufian Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">4</td>
-                        <td class="border border-slate-700 ...">Meriam Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Anass Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Soufian Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">2</td>
-                        <td class="border border-slate-700 ...">Anass Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">3</td>
-                        <td class="border border-slate-700 ...">Soufian Meddiche</td>
-                        <td class="border border-slate-700 ...">saadmeddiche2004201@gmail.com</td>
-                    </tr>
+                    <?php
+                    foreach ($data as $row) {
+                    ?>
+                        <tr>
+                            <td class="border border-slate-700 ..."><?php echo $row["id"] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $row["name"] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $row["email"] ?></td>
+                        </tr>
 
+                    <?php } ?>
                 </tbody>
 
                 <!-- The link from where i got this code -->
@@ -399,4 +346,5 @@ include "../Classes/cities.php";
         $("#to").select2();
     });
 </script>
+
 </html>
