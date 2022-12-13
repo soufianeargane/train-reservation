@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-session_start()
+session_start();
+// var_dump($_SESSION['role']);
+if (!isset($_SESSION['role'])) {
+      header("location:index.php");
+}
 ?>
 
 <head>
@@ -43,9 +47,10 @@ session_start()
                                           <li>
                                                 <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
                                           </li>
+
                                     </ul>
                                     <div class="py-1">
-                                          <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                                          <a href="logout.php" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
                                     </div>
                               </div>
                               <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center mr-4 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
@@ -66,6 +71,13 @@ session_start()
                                           <a href="" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-400 md:hover:bg-transparent md:hover:text-gray-300 md:p-0">Browse</a>
                                     </li>
                               </ul>
+                              <?php
+                              if ($_SESSION['role'] === 1) :
+
+                                    echo '
+                                          <a href="./Dashboard/dashboard.php" class="block py-2 pl-3 pr-4 border-solid border-2 border-black text-white rounded bg-black ">Dashbord</a>
+                                    ';
+                              endif ?>
                         </div>
 
                         <!-- Dropdown menu -->
