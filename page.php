@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-session_start();
-// var_dump($_SESSION['role']);
-if (!isset($_SESSION['role'])) {
-      header("location:index.php");
-}
-?>
 
 <head>
       <meta charset="UTF-8">
@@ -20,6 +13,7 @@ if (!isset($_SESSION['role'])) {
 </head>
 
 <body style="position: static;overflow-y: scroll;">
+
       <div class="container mx-auto">
             <nav class="shadow-md px-2 sm:px-4 py-2.5  w-full   rounded-br-full mb-6">
                   <div class="container flex flex-wrap items-center justify-between mx-auto">
@@ -86,16 +80,13 @@ if (!isset($_SESSION['role'])) {
                         <!-- Dropdown menu -->
 
 
-                  </div>
-            </nav>
-      </div>
-      <!-- <?php
-            // session_start();
-            // echo "Welcome " . " " . $_SESSION['username'];
-            ?> -->
-      <div class="container  mx-auto">
-            <!--first section  -->
+      <?php
+      session_start();
+      echo "Welcome " . " " . $_SESSION['username'];
+      ?>
 
+      <div class="container mx-auto">
+            <!--first section  -->
             <div class="flex flex-wrap justify-between px-6">
                   <div class="flex px-6 ">
                         <button class="h-11  space-x-6  bg-blue-700 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
@@ -108,6 +99,8 @@ if (!isset($_SESSION['role'])) {
                               <span class="font-bold">.18,5$</span>
                         </button>
                   </div>
+
+
                   <div class="mx-auto md:m-0 ">
                         <button type="button" class=" h-11 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 border-hidden  bg-white rounded-lg border  hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 flex items-center justify-center">
                               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -527,11 +520,11 @@ if (!isset($_SESSION['role'])) {
             </div>
 
             <!--seconde part-->
+            <div>
 
+            </div>
       </div>
-
-
-      <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+      </div>
 </body>
 
 </html>

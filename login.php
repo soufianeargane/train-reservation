@@ -1,3 +1,12 @@
+<?php
+if (isset($_GET["tokenVerify"])) {
+
+    session_start();
+
+    $_SESSION["token"] = $_GET["tokenVerify"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +43,7 @@
 
                         <?php if (isset($_GET['message']) && isset($_GET['color'])) : ?>
                             <div id="deletesuccess" class="<?php echo $_GET['color'] ?> my-2">
-                                <strong><?php echo $_GET['message']  ?>!</strong>
+                                <strong><?php echo $_GET['message']   ?>!</strong>
 
                                 <?php
                                 ?>

@@ -1,6 +1,8 @@
 
+
 <?php
 if (isset($_POST["promoteBtnUser"])) {
+
 
 
     $idOfUser = $_POST["idOfUser"];
@@ -11,9 +13,11 @@ if (isset($_POST["promoteBtnUser"])) {
     $user = new promoteUser();
     $user->promote($idOfUser);
 
+
     session_start();
     $_SESSION['role'] = 1;
 
     header("location:./users.php");
 }
+
 
