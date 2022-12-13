@@ -143,7 +143,9 @@ class Accounts extends Dbcon
         }
 
         $this->updateAccount();
+
         header("Location:" . $_SESSION["URLNNOW"]);
+
     }
 
     public function updateAccount()
@@ -159,6 +161,7 @@ class Accounts extends Dbcon
         $stm->execute([$this->nameAccount, $this->emailAccount, $hashedPassword]);
     }
 
+
     // if only the name or the emain has been changed
     public function updateAccount2()
     {
@@ -170,4 +173,5 @@ class Accounts extends Dbcon
 
         $stm->execute([$this->nameAccount, $this->emailAccount]);
     }
+
 }

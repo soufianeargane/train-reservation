@@ -77,4 +77,13 @@ class crudStationConfigue extends Dbcon
         $stmt->execute([$this->id]);
         return $stmt->fetchAll();
     }
+
+    
+    public function CountStation(){
+        $stm = $this->connect()->prepare("SELECT COUNT(*) as 'countStation' FROM `stations`");
+        $stm->execute(); 
+        $s = $stm->fetch();
+        return $s['countStation'];
+
+    }
 }

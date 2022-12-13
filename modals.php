@@ -185,6 +185,7 @@ $trains   =   $show_trains->ShowAllData();
                             foreach ($trains as $train) {
 
                                 echo '<option value="' . $train["id_train"] . '">' . $train["name"] . '</option>';
+
                             }
                             ?>
                         </select>

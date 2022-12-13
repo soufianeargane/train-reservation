@@ -133,4 +133,16 @@ class trip extends Dbcon
                 `starting_time`=?,`price`=?,`arriving_time`=?, `day`=?, `seat` = ? WHERE id_trip=?");
         $stmt->execute([$this->train_id, $this->station_start_id, $this->station_arrive_id, $this->starting_time, $this->price, $this->arriving_time, $this->day, $this->id_trip, $this->seat]);
     }
+
+    public function CountTrips(){
+        $stm = $this->connect()->prepare("SELECT COUNT(*) as 'countTrip' FROM `trips`");
+        $stm->execute(); 
+        $s = $stm->fetch();
+        return $s['countTrip'];
+
+    }
+
+
+
+
 }
