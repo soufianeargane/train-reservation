@@ -136,12 +136,14 @@ class Accounts extends Dbcon
         }
 
         if ($this->NewPass == null || $this->RepeatPass == null || $this->NewPass == "" || $this->RepeatPass == "" || $this->NewPass == " " || $this->RepeatPass == " ") {
-            header("Location:./account.php");
+            // if only the name or the emain has been changed
+            $this->updateAccount2();
+            header("Location:" . $_SESSION["URLNNOW"]);
             exit();
         }
 
         $this->updateAccount();
-        header("Location:./account.php");
+        header("Location:" . $_SESSION["URLNNOW"]);
     }
 
     public function updateAccount()
@@ -155,5 +157,17 @@ class Accounts extends Dbcon
         $_SESSION['username'] = explode("@", $_SESSION['email']);
 
         $stm->execute([$this->nameAccount, $this->emailAccount, $hashedPassword]);
+    }
+
+    // if only the name or the emain has been changed
+    public function updateAccount2()
+    {
+        $stm = $this->connect()->prepare("UPDATE `user` SET `name`=?,`email`=? WHERE id = " . $this->id);
+
+        $_SESSION['name'] = $this->nameAccount;
+        $_SESSION['email'] = $this->emailAccount;
+        $_SESSION['username'] = explode("@", $_SESSION['email']);
+
+        $stm->execute([$this->nameAccount, $this->emailAccount]);
     }
 }

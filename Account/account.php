@@ -40,7 +40,7 @@ $allCities2 = $fetch2->fetchCities();
 <body class="mainBody ">
 
     <!-- =====================SideBare In mobil===================== -->
-    <div class="navbar w-full">
+    <div class="navbar w-full ">
         <nav id="navbar" class="navbar flex items-center p-2 text-base font-normal text-gray-900  dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center bg-black h-16 border-b-2">
 
 
