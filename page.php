@@ -13,18 +13,28 @@
 </head>
 
 <body style="position: static;overflow-y: scroll;">
+<?php
+if($_SERVER['REQUEST_METHOD']==="POST"){
+   echo "<pre>";
+   print_r($_POST);
+   echo "</pre>";
+}
 
+
+?>
 <?php
       
       include './ticketsconfiguration.php';
 
       $ticket = new configtickets();
- 
       $ticketcustomer=array();
-      $ticketcustomer = $ticket->fetchtickets($_SESSION['date']);
+      $ticketcustomer = $ticket -> fetchtickets($_SESSION['date']);
+      $city = new  configtickets();
+      $city  = array();
+      
+      // $cityname = $ticket -> getarrivingcity($id);
       var_dump($ticketcustomer);
-   
-      session_start();
+      $total = (int)$_SESSION['price'] * (int)$_SESSION['qte.'];
       echo "Welcome " . " " . $_SESSION['username'];
       ?>
 
@@ -169,15 +179,26 @@
                         <?php
                               foreach($ticketcustomer as $fetche) {
                               ?>
-                               <div class="flex justify-between w-full block  px-4  border  sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                              
+                     
+                                    <form action=""  method = "post">
+
+
+                                    <input name="station_start_id" type = "hidden" value ="<?php echo  $fetche['station_start_id'];?>"> 
+                                    <input name="station_arrive_id" type = "hidden" value ="<?php echo  $fetche['station_arrive_id'];?>"> 
+                                    <input name="'starting_time" type = "hidden" value ="<?php echo  $fetche['starting_time'];?>"> 
+                                    <input name="'id_trip" type = "hidden" value ="<?php echo  $fetche['id_trip'];?>"> 
+
+
+                               <button type = "submit" name= "showticket" class="  border-black	border-4 flex justify-between w-full block  px-4  border  sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                                <div>
                                      <div class="flex space-x-2 inline-block text-xl font-extrabold items-center">
-                                           <span><?php echo $fetche['starting_time'] ?></span>
+                                           <input class= "w-24" value="<?php echo $fetche['starting_time'] ?>">
                                            <ion-icon name="arrow-forward-outline"></ion-icon>
                                            <span><?php echo $fetche['arriving_time'] ?></span>
                                      </div>
                                      <div class="pt-2 font-thin text-sm">
-                                           <span class="font-mono">1h 56m, 0 changes</span>
+                                           <input name="station-arrive" class="font-mono" value ="<?php echo  $fetche['station_arrive_id'];?>"> 
                                      </div>
                                      <div class="flex ">
                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
@@ -196,21 +217,20 @@
                                </div>
 
                                <span class="px-2 ">
-                                     <img src="./images/oncf.png" alt="">
+                                     <img src="./assets/img/oncf.png" alt="">
                                </span>
 
 
                                <div class=" pr-7 block">
-                                     <h6 class="text-xl font-mono ">$66.22</h6>
-                                     <h6 class="font-thin text-orange-500">only 6 left </h6>
+                                     <input name = "price" class="text-xl font-mono " value ="<?php echo $fetche['price'] ."Dh" ?>">
                                </div>
-
-
                                <div class=" px-1 block">
-                                     <h6 class="text-xl font-mono ">$106.22</h6>
+                                     <h6 class="text-xl font-mono "><?php echo ((40 / 100) * $fetche['price']) + $fetche['price'] ?> DH </h6>
                                </div>
-                         </div>
-                    
+                         </button>
+                         </>
+                         </form>
+                              
                          <?php }?>    
 
                         </div>
@@ -221,67 +241,60 @@
                   <div class="  py-5 px-12  lg:w-1/2 ">
                         <section class="shadow-xl">
                               <div class="grow bg-slate-800  rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-                                    l <a href="#">
-
+                                     <a href="#">
+                                          <form  action="" method="post">
                                           <div class="pl-5 pb-5">
                                                 <a href="#">
-                                                      <h5 class="text-4xl font-poppins text-tahiti text-white">reserve your seconde class ticket </h5>
+                                                      <h5 class="text-3xl py-3 font-poppins font-extrabold text-white">Reserve your seconde class ticket </h5>
                                                 </a>
                                                 <div class=" items-center mt-2.5 mb-5">
                                                       <div class="flex">
                                                             <p class="text-white  font-extrabold">Selected item price :</p>
-                                                            <span class="bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">500000</span>
-                                                      </div>
-                                                      <div class="flex py-2">
+                                                       <input disabled name="price" class="bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:text-blue-800 ml-3" value = "<?php echo $_SESSION['price'] ?>">
                                                             <p class="text-white ">Qte. Selected :</p>
-                                                            <span class="bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                                            <input  type="number" id="quantity" name="quantity" min="1" max="15"  class= "bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php echo $_SESSION['qte.']?>">
                                                       </div>
                                                 </div>
                                                 <div class="flex items-center justify-between">
-                                                      <span class="text-3xl  font-extrabold  text-white">TOTAL PRICE : <span>$599</span></span>
-                                                      <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
+                                                      <label  class = "text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
+                                                      <input  name ="total-PRICE" value = "<?php echo $total?>.DH" class="w-24 text-xl  font-extrabold  text-white" disabled>
+                                                      <button name = "calcualte" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
                                                 </div>
                                           </div>
+                                          </form>
                               </div>
                         </section>
 
                         <section class="shadow-l py-5">
                               <div class="grow bg-yellow-300 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                                     <a href="#">
-
+                                    <form  action="" method="post">
                                           <div class="pl-5 pb-5">
                                                 <a href="#">
-                                                      <h5 class="text-4xl text-tahiti  font-poppins font-extrabold text-black">reserve First class ticket now !</h5>
+                                                      <h5 class="text-4xl text-tahiti  font-poppins font-extrabold text-black">Reserve First class ticket now !</h5>
                                                 </a>
-                                                <div class=" items-center mt-2.5 mb-5">
+                                                <div class="  items-center mt-2.5 mb-5">
                                                       <div class="flex">
                                                             <p class="text-black  font-extrabold">Selected item price :</p>
-                                                            <span class="bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">500000</span>
+                                                            <input name ="p1" type="text"  disabled class="bg-blue-100 bg-slate-800  text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php echo  ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price'] )?>"> 
+                                                            
                                                       </div>
                                                       <div class="flex py-2">
-                                                            <p class="text-black font-extrabold ">Qte. Selected :</p>
-                                                            <span class="bg-blue-100 bg-slate-800  text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
+                                                            <lablel class="text-black font-extrabold ">Qte. Selected :</label>
+                                                            <input  type="number" id="quantity" name="quantity1" min="1" max="15"  class= "bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php echo $_SESSION['qte1']?>">
                                                       </div>
                                                 </div>
-                                                <div class="flex items-center justify-between">
-                                                      <span class="text-3xl  font-extrabold text-black">TOTAL PRICE : <span>$599</span></span>
-                                                      <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
+                                                <div class = "flex items-center justify-between">
+                                                <label  class = "text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
+                                                <input type="text"  value = "<?php echo ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price'] ) *(int)$_SESSION['qte1']?>.DH" class="w-24 text-xl  font-extrabold  text-white" disabled>
+                                                      <button name ="firstclassbtn" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
+                                                          
                                                 </div>
                                           </div>
+                                    </form>
                               </div>
                         </section>
-                        <section class="flex flex-col lg:flex-row items-start items-center lg:justify-center w-full w-full lg:px-10 py-12 ">
-                              <article class="w-4/5 lg:w-custom mb-10 lg:px-4 py-10 text-center text-primary-dark bg-primary-white">
-                                    <h5 class="font-bold text-base">1st class</h5>
-                                    <h2 class="pb-4 flex justify-center font-bold border-b border-gray-300">
-                                          <span class="text-6xl">TOTAL</span>
-                                    </h2>
-                                    <ul class="py-2 text-sm font-bold">
-                                          <li class="pt-4 pb-4 border-b border-black-300">unite ticket price</li>
-                                          <li class="pt-3 pb-4 border-b border-gray-300">Qte .</li>
-                                          <li class="pt-4 pb-4 border-b border-gray-300">Total price</li>
-                                    </ul>
-                                    <button type="button" class="text-white  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">confirm your ticket</button>
+                              
 
                   </div>
 

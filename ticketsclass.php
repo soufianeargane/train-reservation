@@ -19,11 +19,9 @@ class ticket
            return $this -> $id_T;
       }
 
-
       public function selectticketsbytime()
       {
             
-
 
       }
       
