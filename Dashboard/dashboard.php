@@ -5,6 +5,11 @@ $_SESSION["URLNNOW"] = $_SERVER['REQUEST_URI'];
 
 include "../CRUDTRAIN/CrudTrain.php";
 include "../Crud-station/crud-station-controle-classes.php";
+
+
+
+include "../CRUDTRAIN/CrudTrain.php";
+include "../Crud-station/crud-station-controle-classes.php";
 include "../Classes/fetchusers.php";
 include "../modals/trips_modal.php";
 ?>

@@ -14,6 +14,7 @@ class users extends Dbcon {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
     public function CountUser(){
         $stm = $this->connect()->prepare("SELECT COUNT(*) as 'countUsers' FROM `user` where role=0");
         $stm->execute(); 
@@ -28,6 +29,7 @@ class users extends Dbcon {
         return $s['CountAdmins'];
 
     }
+
 
 
 
