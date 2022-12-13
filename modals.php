@@ -183,6 +183,7 @@ $trains   =   $show_trains->ShowAllData();
                             <option selected disabled>Select the train</option>
                             <?php
                             foreach ($trains as $train) {
+
                                 echo '<option value="' . $train["id_train"] . '">' . $train["name"] . '</option>';
                             }
                             ?>
