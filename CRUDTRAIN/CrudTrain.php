@@ -62,6 +62,14 @@ class Train extends Dbcon
         $stm->execute([$this->id_train]);
         // return $stm->fetchAll();
     }
+    public function CountTrain(){
+        $stm = $this->connect()->prepare("SELECT COUNT(*) as 'countTrain' FROM `train`");
+        $stm->execute(); 
+        $s = $stm->fetch();
+        return $s['countTrain'];
+
+    }
+
 }
 
 // PROSESS

@@ -21,7 +21,6 @@
     <section class="bg-indigo-50 min-h-screen  flex items-center justify-center ">
         <div class="bg-[#06b6d4] flex rounded-xl shadow-lg max-w-6xl p-4">
 
-
             <div class="md:w-1/2  px-16 py-6">
 
                 <?php
@@ -30,6 +29,7 @@
                     echo $_SESSION["messageOfValidationOfEmail"];
                     unset($_SESSION["messageOfValidationOfEmail"]);
                 }
+
                 ?>
                 <h2 class="font-bold text-3xl text-white ml-2 ">Sign up</h3>
                     <form action="signupprocess.php" method="POST" class="flex flex-col gap-4" data-parsley-ui-enabled="true" data-parsley-validate="">
