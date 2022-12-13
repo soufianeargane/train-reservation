@@ -85,6 +85,11 @@ $allCities2 = $city2->fetchCities();
                         </select>
                     </div>
                     <div>
+                        <!-- input type date and time -->
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting date and time</label>
+                        <input value="<?php echo $data['starting_time'] ?>" type="datetime-local" name="starting_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                    </div>
+                    <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">To</label>
                         <select name="station_arrive_id" id="to">
                             <option value="<?php echo $data['station_arrive_id'] ?>" selected><?php echo $data['end'] ?></option>
@@ -97,19 +102,8 @@ $allCities2 = $city2->fetchCities();
                     </div>
                     <div>
                         <!-- input type date and time -->
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Day of trip</label>
-                        <input type="date" name="day" value="<?php echo $data['day'] ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                    </div>
-                    <div>
-                        <!-- input type date and time -->
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting time</label>
-                        <input value="<?php echo $data['starting_time'] ?>" type="time" name="starting_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                    </div>
-
-                    <div>
-                        <!-- input type date and time -->
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">arriving time</label>
-                        <input value="<?php echo $data['arriving_time'] ?>" type="time" name="arriving_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting date and time</label>
+                        <input value="<?php echo $data['arriving_time'] ?>" type="datetime-local" name="arriving_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     </div>
                     <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Price</label>

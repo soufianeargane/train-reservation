@@ -5,7 +5,6 @@ if (isset($_POST['add_trip'])) {
     $train_id           = $_POST['train_id'];
     $station_start_id   = $_POST['station_start_id'];
     $station_arrive_id  = $_POST['station_arrive_id'];
-    $day                = $_POST['day'];
     $starting_time      = $_POST['starting_time'];
     $arriving_time      = $_POST['arriving_time'];
     $price              = $_POST['price'];
@@ -16,7 +15,6 @@ if (isset($_POST['add_trip'])) {
     $trip->setTrainId($train_id);
     $trip->setStationStartId($station_start_id);
     $trip->setStationArriveId($station_arrive_id);
-    $trip->setDay($day);
     $trip->setStartingTime($starting_time);
     $trip->setArrivingTime($arriving_time);
     $trip->setPrice($price);
@@ -41,7 +39,6 @@ if (isset($_POST['update_trip'])) {
     $train_id           = $_POST['train_id'];
     $station_start_id   = $_POST['station_start_id'];
     $station_arrive_id  = $_POST['station_arrive_id'];
-    $day = $_POST['day'];
     $starting_time      = $_POST['starting_time'];
     $arriving_time      = $_POST['arriving_time'];
     $price              = $_POST['price'];
@@ -52,7 +49,6 @@ if (isset($_POST['update_trip'])) {
     $trip->setTrainId($train_id);
     $trip->setStationStartId($station_start_id);
     $trip->setStationArriveId($station_arrive_id);
-    $trip->setDay($day);
     $trip->setStartingTime($starting_time);
     $trip->setArrivingTime($arriving_time);
     $trip->setPrice($price);

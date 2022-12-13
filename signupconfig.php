@@ -41,11 +41,11 @@ class signupconfig
       {
             return $this->password;
       }
-      public function insertData()
+      public function insertData($tokenVerify)
       {
             try {
-                  $data = ['name' => $this->name, 'email' => $this->email, 'password' => $this->password, 'role' => 0];
-                  $sql  = "INSERT INTO user(name, email, password, role) VALUES (:name,:email,:password,:role)";
+                  $data = ['name' => $this->name, 'email' => $this->email, 'password' => $this->password, 'role' => 0 , 'token' => $tokenVerify];
+                  $sql  = "INSERT INTO user(name, email, password, role,token) VALUES (:name,:email,:password,:role,:token)";
                   $stmt = $this->dbcon->prepare($sql);
                   $stmt->execute($data);
             } catch (Exception $e) {
