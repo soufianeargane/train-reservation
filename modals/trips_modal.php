@@ -10,6 +10,7 @@ class trip extends Dbcon
     private $starting_time;
     private $arriving_time;
     private $price;
+    private $seat;
     // setters and getters
     public function setIdOfTrip($id_trip)
     {
@@ -75,12 +76,20 @@ class trip extends Dbcon
     {
         return $this->price;
     }
+    public function setSeat($seat)
+    {
+        $this->seat = $seat;
+    }
+    public function getSeat()
+    {
+        return $this->seat;
+    }
 
     //insert data
     public function insertTrip()
     {
-        $stmt = $this->connect()->prepare("INSERT INTO `trips`(`train_id`,`station_start_id`,`station_arrive_id`,`starting_time`,`price`,`arriving_time`, `day`) VALUES (?,?,?,?,?,?,?)");
-        $stmt->execute([$this->train_id, $this->station_start_id, $this->station_arrive_id, $this->starting_time, $this->price, $this->arriving_time, $this->day]);
+        $stmt = $this->connect()->prepare("INSERT INTO `trips`(`train_id`,`station_start_id`,`station_arrive_id`,`starting_time`,`price`,`arriving_time`, `day`, `seat`) VALUES (?,?,?,?,?,?,?,?)");
+        $stmt->execute([$this->train_id, $this->station_start_id, $this->station_arrive_id, $this->starting_time, $this->price, $this->arriving_time, $this->day, $this->seat]);
     }
 
 
@@ -121,7 +130,7 @@ class trip extends Dbcon
     {
         $stmt = $this->connect()->prepare("UPDATE `trips` 
                 SET `train_id`=?,`station_start_id`=?,`station_arrive_id`=?,
-                `starting_time`=?,`price`=?,`arriving_time`=?, `day`=? WHERE id_trip=?");
-        $stmt->execute([$this->train_id, $this->station_start_id, $this->station_arrive_id, $this->starting_time, $this->price, $this->arriving_time, $this->day, $this->id_trip]);
+                `starting_time`=?,`price`=?,`arriving_time`=?, `day`=?, `seat` = ? WHERE id_trip=?");
+        $stmt->execute([$this->train_id, $this->station_start_id, $this->station_arrive_id, $this->starting_time, $this->price, $this->arriving_time, $this->day, $this->id_trip, $this->seat]);
     }
 }
