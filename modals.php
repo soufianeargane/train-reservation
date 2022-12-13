@@ -176,13 +176,14 @@ $trains   =   $show_trains->ShowAllData();
                     </button>
                 </div>
                 <!-- Modal body -->
-                <div class="p-6 space-y-6">
+                <div class="p-6 space-y-3">
                     <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name Of Train</label>
                         <select name="train_id" id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                             <option selected disabled>Select the train</option>
                             <?php
                             foreach ($trains as $train) {
+
                                 echo '<option value="' . $train["id_train"] . '">' . $train["name"] . '</option>';
                             }
                             ?>
@@ -200,11 +201,6 @@ $trains   =   $show_trains->ShowAllData();
                         </select>
                     </div>
                     <div>
-                        <!-- input type date and time -->
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting date and time</label>
-                        <input type="datetime-local" name="starting_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                    </div>
-                    <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">To</label>
                         <select name="station_arrive_id" id="to">
                             <option selected disabled>Select your country</option>
@@ -217,11 +213,22 @@ $trains   =   $show_trains->ShowAllData();
                     </div>
                     <div>
                         <!-- input type date and time -->
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting date and time</label>
-                        <input type="datetime-local" name="arriving_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Day of trip</label>
+                        <input type="date" name="day" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     </div>
                     <div>
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Price</label>
+                        <!-- input type date and time -->
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting time</label>
+                        <input type="time" name="starting_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                    </div>
+
+                    <div>
+                        <!-- input type date and time -->
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">arriving time</label>
+                        <input type="time" name="arriving_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                    </div>
+                    <div>
+                        <label for="text" class="block  text-sm font-medium text-gray-900 ">Price</label>
                         <input type="text" name="price" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
                     </div>
                 </div>
