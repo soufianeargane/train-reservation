@@ -8,14 +8,6 @@ include "../Crud-station/crud-station-controle-classes.php";
 
 
 
-$data = new crudStationConfigue();
-$all = $data->fetchAllTables();
-
-$fetch2 = new cities();
-//call the method that will fetch all the citie from ville table , so we can use it select
-$allCities2 = $fetch2->fetchCities();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -39,59 +31,61 @@ $allCities2 = $fetch2->fetchCities();
 
 
 
-<body class="mainBody" style="background-position: center;background-repeat: no-repeat; background-size:cover; background-image: url('../img/bgaccount.png'); ">
+<body class="mainBody">
 
     <!-- =====================Information of Account===================== -->
-    <div class="w-full px-10 my-auto ">
+    <div class="container p-20 mx-auto flex justify-between">
+        <div class=" mx-auto px-10 my-auto ">
 
-        <form class="" action="./account-db.php" method="post" data-parsley-validate>
-            <input type="hidden" name="idAccount" id="" value="<?php echo $_SESSION["id"] ?>">
-            <?php
-            if (isset($_SESSION["messageAccount"])) {
-                echo $_SESSION["messageAccount"];
-                unset($_SESSION["messageAccount"]);
-            }
-            ?>
+            <form class="" action="./account-db.php" method="post" data-parsley-validate>
+                <input type="hidden" name="idAccount" id="" value="<?php echo $_SESSION["id"] ?>">
+                <?php
+                if (isset($_SESSION["messageAccount"])) {
+                    echo $_SESSION["messageAccount"];
+                    unset($_SESSION["messageAccount"]);
+                }
+                ?>
 
-            <div>
-                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Name</label>
-                <input type="text" name="nameAccounts" id="nameAccountjs" value="<?php echo $_SESSION['name'] ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Name ..." required disabled>
-            </div>
-            <div>
-                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Email</label>
-                <input type="text" name="emailAccounts" id="emailAccountjs" value="<?php echo $_SESSION['email'] ?>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Email ..." required disabled>
-            </div>
-            <!-- this divs shoulb be shown when the BTN modification is clicked -->
-            <div class="AfterMod hidden">
-                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Current Password</label>
-                <input type="text" name="CurrentPass" id="currentpass" value="" class="clear bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Current Password ..." data-parsley-minlength="8" data-parsley-minlength-message="Please set a password more then 8" required>
-            </div>
-            <div class="AfterMod hidden">
-                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">New Password</label>
-                <input type="text" name="NewPass" id="newpass" value="" class="clear bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="New Password ..." data-parsley-minlength="8" data-parsley-minlength-message="Please set a password more then 8" data-parsley-equalto="#repeatpass" data-parsley-equalto-message="This is not the same password">
-            </div>
-            <div class="AfterMod hidden">
-                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black"> Repeat Password</label>
-                <input type="text" name="RepeatPass" id="repeatpass" value="" class="clear bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Repeat Password ..." data-parsley-equalto="#newpass" data-parsley-equalto-message="This is not the same password" data-parsley-minlength="8" data-parsley-minlength-message="Please set a password more then 8">
-            </div>
-            <!-- end -->
-            <div class="AfterMod">
-                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password</label>
-                <input type="text" id="" value="********" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Password ..." disabled>
-                <input type="hidden" id="nowpass" name="NowPass" value="<?php echo $_SESSION['password'] ?> ">
-            </div>
-            <div>
-                <label for="text" class="block mb-2 text-sm font-medium text-white ">You can't see me</label>
-                <div class="flex gap-2">
-                    <a onclick="modifications()" class="AfterMod text-center cursor-pointer hidden bg-gray-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-1/3"><b>Cancel</b></a>
-                    <a onclick="modifications()" class="AfterMod text-center cursor-pointer bg-gray-700  text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"><b>Modifications</b></a>
-                    <button type="submit" name="updateBtnAccount" class="AfterMod hidden  bg-gray-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-2/3"><b>Update</b></button>
+                <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Name</label>
+                    <input type="text" name="nameAccounts" id="nameAccountjs" value="<?php echo $_SESSION['name'] ?>" class="bg-gray-50 w-80 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block  p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Name ..." required disabled>
                 </div>
-            </div>
-        </form>
+                <div>
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Email</label>
+                    <input type="text" name="emailAccounts" id="emailAccountjs" value="<?php echo $_SESSION['email'] ?>" class="bg-gray-50 w-80 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block  p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Email ..." required disabled>
+                </div>
+                <!-- this divs shoulb be shown when the BTN modification is clicked -->
+                <div class="AfterMod hidden">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Current Password</label>
+                    <input type="text" name="CurrentPass" id="currentpass" value="" class="clear bg-gray-50 border border-gray-300 text-gray-900 w-80 text-sm rounded-lg focus:ring-black focus:border-black block  p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Current Password ..." data-parsley-minlength="8" data-parsley-minlength-message="Please set a password more then 8" required>
+                </div>
+                <div class="AfterMod hidden">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">New Password</label>
+                    <input type="text" name="NewPass" id="newpass" value="" class="clear bg-gray-50 border border-gray-300 text-gray-900 text-sm w-80 rounded-lg focus:ring-black focus:border-black block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="New Password ..." data-parsley-minlength="8" data-parsley-minlength-message="Please set a password more then 8" data-parsley-equalto="#repeatpass" data-parsley-equalto-message="This is not the same password">
+                </div>
+                <div class="AfterMod hidden">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black"> Repeat Password</label>
+                    <input type="text" name="RepeatPass" id="repeatpass" value="" class="clear bg-gray-50 border border-gray-300 text-gray-900 w-80 text-sm rounded-lg focus:ring-black focus:border-black block  p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Repeat Password ..." data-parsley-equalto="#newpass" data-parsley-equalto-message="This is not the same password" data-parsley-minlength="8" data-parsley-minlength-message="Please set a password more then 8">
+                </div>
+                <!-- end -->
+                <div class="AfterMod">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password</label>
+                    <input type="text" id="" value="********" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-80 focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Password ..." disabled>
+                    <input type="hidden" id="nowpass" name="NowPass" value="<?php echo $_SESSION['password'] ?> ">
+                </div>
+                <div class="mt-4">
+                    <!-- <label for="text" class="block mb-2 text-sm font-medium text-white ">You can't see me</label> -->
+                    <div class="flex gap-2">
+                        <a onclick="modifications()" class="AfterMod text-center cursor-pointer hidden bg-gray-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-800 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-1/3"><b>Cancel</b></a>
+                        <a onclick="modifications()" class="AfterMod text-center cursor-pointer bg-gray-700  text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-800 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"><b>Modifications</b></a>
+                        <button type="submit" name="updateBtnAccount" class="AfterMod hidden  bg-gray-700 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-800 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white w-2/3"><b>Update</b></button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
 
     </div>
-
     <!-- Include the short cut of all modals -->
     <?php
     include "../modals.php";
