@@ -44,9 +44,12 @@ if (!isset($_SESSION['role'])) {
                                           <li>
                                                 <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">History</a>
                                           </li>
-                                          <li>
-                                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                                          </li>
+                                          <?php
+                                          if ($_SESSION['role'] === 0) :
+                                                echo '<li>
+                                                <a href="./Account/regularAccount.php" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                                </li>';
+                                          endif ?>
 
                                     </ul>
                                     <div class="py-1">

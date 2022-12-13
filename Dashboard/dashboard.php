@@ -3,8 +3,8 @@ session_start();
 $_SESSION["URLNNOW"] = $_SERVER['REQUEST_URI'];
 
 
-include "../CRUDTRAIN/CrudTrain.php";
-include "../Crud-station/crud-station-controle-classes.php";
+
+
 
 
 
@@ -264,10 +264,11 @@ include "../modals/trips_modal.php";
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Stations</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : <?php
-                        
-                        $show_num_station  =   new crudStationConfigue();
 
-                        echo $show_num_station->CountStation();?></p></p>
+                                                                                                    $show_num_station  =   new crudStationConfigue();
+
+                                                                                                    echo $show_num_station->CountStation(); ?></p>
+                        </p>
                         <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p> -->
 
                     </div>
@@ -280,12 +281,12 @@ include "../modals/trips_modal.php";
                     <div class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg mx-3" style="height: 120px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(../img/train.jpg);"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Trains</h5>
-                        
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible :<?php
-                        
-                        $show_num_train  =   new train();
 
-                        echo $show_num_train->CountTrain();?></p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible :<?php
+
+                                                                                                    $show_num_train  =   new train();
+
+                                                                                                    echo $show_num_train->CountTrain(); ?></p>
 
                         <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 120</p> -->
 
@@ -300,7 +301,7 @@ include "../modals/trips_modal.php";
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Tickets</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 12</p>
-                        
+
 
                     </div>
                 </a>
@@ -313,10 +314,10 @@ include "../modals/trips_modal.php";
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Trips</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : <?php
-                        
-                        $show_num_trips  =   new trip();
 
-                        echo $show_num_trips->CountTrips();?></p>
+                                                                                                    $show_num_trips  =   new trip();
+
+                                                                                                    echo $show_num_trips->CountTrips(); ?></p>
                         <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p> -->
 
                     </div>
@@ -330,10 +331,10 @@ include "../modals/trips_modal.php";
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Users</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : <?php
-                        
-                        $show_num_train  =   new users();
 
-                        echo $show_num_train->CountUser();?></p>
+                                                                                                    $show_num_train  =   new users();
+
+                                                                                                    echo $show_num_train->CountUser(); ?></p>
 
                         <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p> -->
 
@@ -347,10 +348,10 @@ include "../modals/trips_modal.php";
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Admins</h5>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : <?php
-                        
-                        $show_num_Admin  =   new users();
 
-                        echo $show_num_Admin->CountAdmin();?></p>
+                                                                                                    $show_num_Admin  =   new users();
+
+                                                                                                    echo $show_num_Admin->CountAdmin(); ?></p>
                         <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p> -->
 
                     </div>
