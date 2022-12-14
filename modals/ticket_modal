@@ -1,0 +1,18 @@
+<?php
+include_once './config/db.php';
+class Ticket extends Dbcon
+{
+    public function getTicket()
+    {
+        $db = $this->connect();
+        $sql = "SELECT tickets.* , 
+        v_start.ville as start , s_end.ville as end FROM tickets 
+        inner join ville as v_start on v_start.id=tickets.city_from_id 
+        inner join ville as s_end on s_end.id=tickets.city_to_id 
+        WHERE tickets.user_id = $_SESSION[id];";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+}

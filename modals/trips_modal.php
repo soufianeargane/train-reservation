@@ -100,7 +100,7 @@ class trip extends Dbcon
         v_start.ville as start , s_end.ville as end, train.name as name FROM trips 
         inner join ville as v_start on v_start.id=trips.station_start_id 
         inner join ville as s_end on s_end.id=trips.station_arrive_id 
-        INNER JOIN train on trips.train_id = train.id_train
+        INNER JOIN train on trips.train_id = train.id_train 
         ");
         $stmt->execute();
         $result = $stmt->fetchAll();
@@ -134,15 +134,11 @@ class trip extends Dbcon
         $stmt->execute([$this->train_id, $this->station_start_id, $this->station_arrive_id, $this->starting_time, $this->price, $this->arriving_time, $this->day, $this->id_trip, $this->seat]);
     }
 
-    public function CountTrips(){
+    public function CountTrips()
+    {
         $stm = $this->connect()->prepare("SELECT COUNT(*) as 'countTrip' FROM `trips`");
-        $stm->execute(); 
+        $stm->execute();
         $s = $stm->fetch();
         return $s['countTrip'];
-
     }
-
-
-
-
 }
