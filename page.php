@@ -14,11 +14,6 @@
 
 <body style="position: static;overflow-y: scroll;">
 <?php
-if($_SERVER['REQUEST_METHOD']==="POST"){
-   echo "<pre>";
-   print_r($_POST);
-   echo "</pre>";
-}
 
 
 ?>
@@ -31,9 +26,6 @@ if($_SERVER['REQUEST_METHOD']==="POST"){
       $ticketcustomer = $ticket -> fetchtickets($_SESSION['date']);
       $city = new  configtickets();
       $city  = array();
-      
-      // $cityname = $ticket -> getarrivingcity($id);
-      var_dump($ticketcustomer);
       $total = (int)$_SESSION['price'] * (int)$_SESSION['qte.'];
       echo "Welcome " . " " . $_SESSION['username'];
       ?>
@@ -184,12 +176,6 @@ if($_SERVER['REQUEST_METHOD']==="POST"){
                                     <form action=""  method = "post">
 
 
-                                    <input name="station_start_id" type = "hidden" value ="<?php echo  $fetche['station_start_id'];?>"> 
-                                    <input name="station_arrive_id" type = "hidden" value ="<?php echo  $fetche['station_arrive_id'];?>"> 
-                                    <input name="'starting_time" type = "hidden" value ="<?php echo  $fetche['starting_time'];?>"> 
-                                    <input name="'id_trip" type = "hidden" value ="<?php echo  $fetche['id_trip'];?>"> 
-
-
                                <button type = "submit" name= "showticket" class="  border-black	border-4 flex justify-between w-full block  px-4  border  sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                                <div>
                                      <div class="flex space-x-2 inline-block text-xl font-extrabold items-center">
@@ -257,7 +243,11 @@ if($_SERVER['REQUEST_METHOD']==="POST"){
                                                 </div>
                                                 <div class="flex items-center justify-between">
                                                       <label  class = "text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
-                                                      <input  name ="total-PRICE" value = "<?php echo $total?>.DH" class="w-24 text-xl  font-extrabold  text-white" disabled>
+                                                      <input  name ="totalPRICE1"  value = "<?php echo  $total?>" class="w-24 text-xl  font-extrabold  text-white" disabled>
+                                                      <input name="station_start_id" type = "hidden" value ="<?php echo  $fetche['station_start_id'];?>"> 
+                                                      <input name="station_arrive_id" type = "hidden" value ="<?php echo  $fetche['station_arrive_id'];?>"> 
+                                                      <input name="starting_time" type = "hidden" value ="<?php echo  $fetche['starting_time'];?>"> 
+                                                      <input name="id_trip" type = "hidden" value ="<?php echo  $fetche['id_trip'];?>"> 
                                                       <button name = "calcualte" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
                                                 </div>
                                           </div>
@@ -271,7 +261,7 @@ if($_SERVER['REQUEST_METHOD']==="POST"){
                                     <form  action="" method="post">
                                           <div class="pl-5 pb-5">
                                                 <a href="#">
-                                                      <h5 class="text-4xl text-tahiti  font-poppins font-extrabold text-black">Reserve First class ticket now !</h5>
+                                                      <h5 class="text-4xl text-tahiti  font-poppins font-extrabold text-black">Reserve First class ticket now Comming Sooon !</h5>
                                                 </a>
                                                 <div class="  items-center mt-2.5 mb-5">
                                                       <div class="flex">
@@ -286,7 +276,7 @@ if($_SERVER['REQUEST_METHOD']==="POST"){
                                                 </div>
                                                 <div class = "flex items-center justify-between">
                                                 <label  class = "text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
-                                                <input type="text"  value = "<?php echo ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price'] ) *(int)$_SESSION['qte1']?>.DH" class="w-24 text-xl  font-extrabold  text-white" disabled>
+                                                <input type="text"  name ="total1stclass" value = "<?php echo ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price'] ) *(int)$_SESSION['qte1']?>.DH" class="w-24 text-xl  font-extrabold  text-white" disabled>
                                                       <button name ="firstclassbtn" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
                                                           
                                                 </div>

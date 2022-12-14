@@ -24,11 +24,11 @@ class configtickets extends Dbcon
             }
       }
 
-      public function addticket($var1,$var2,$var3,$var4,$var5,$var6,$var7)
+      public function addticket($var1,$var2,$var3,$var4,$var5,$var6)
       {
-            $sql= "INSERT INTO `tickets`(`city_from_id`, `city_to_id`, `Departure`, `trip_id`, `id_user`, `qte`, `Total_price`) VALUES (?,?,?,?,?,?,?)";
-            $stm = connect() ->prepare($sql);
-            $stmt->execute([$name, $surname, $sex]);
+            $sql= "INSERT INTO `tickets`(`city_from_id`, `city_to_id`, `Reservation_time`, `trip_id`, `id_user`, `qte`) VALUES (?,?,?,?,?,?)";
+            $stm = $this-> connect()->prepare($sql);
+            $stm->execute([$var1,$var2,$var3,$var4,$var5,$var6]);
       }
 
       public function getarrivingcity($id)
@@ -59,13 +59,6 @@ if(isset($_POST['showticket']))
       $name = new configtickets();
       $name  -> getarrivingcity($id);
 
-      $_SESSION['station_start_id'] = $_POST['station_start_id'];
-      $_SESSION['station_arrive_id'] = $_POST['station_arrive_id'];
-      $_SESSION['starting_time'] = $_POST['starting_time'];
-      $_SESSION['id_trip'] = $_POST['id_trip'];
-       $id_user= $_SESSION['id'];
-       $_SESSION['totalprice'] = $_POST['total-PRICE'];
-       $name ->addticket($_SESSION['station_start_id'],$_SESSION['station_arrive_id'],$_SESSION['starting_time'],$_SESSION['id_trip'], $id_user, $_SESSION['qte.'], $_SESSION['totalprice'] );
 
 
 }
@@ -79,12 +72,16 @@ if(isset($_POST['calcualte']))
  $_SESSION['qte.'] = $_POST['quantity'];
  $start_id = $_SESSION['station_start_id'];
  $arrive_id = $_SESSION['station_arrive_id'];
- $starting_time =$_SESSION['starting_time'];
  $trip_id = $_SESSION['id_trip'];
  $user_id = $_SESSION['id'];
+ $_SESSION['station_start_id'] = $_POST['station_start_id'];
+ $_SESSION['station_arrive_id'] = $_POST['station_arrive_id'];
+ $_SESSION['starting_time'] = $_POST['starting_time'];
+ $_SESSION['id_trip'] = $_POST['id_trip'];
+ $date =date("h:i:sa");
 
-
-$anc = new configtickets();
+ $name = new configtickets();
+ $name ->addticket($_SESSION['station_start_id'],$_SESSION['station_arrive_id'], date("Y-m-d h:i:sa") ,$_POST['id_trip'], $user_id, $_SESSION['qte.']);
 }
 
 if(isset($_POST['trip-day']))
@@ -93,6 +90,7 @@ if(isset($_POST['trip-day']))
       $_SESSION['date'] = $day;
       $ticket = new configtickets();
       $ticket ->  fetchtickets($day);      
+      
 }
 
 if(isset($_POST['firstclassbtn']))
