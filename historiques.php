@@ -65,7 +65,7 @@ $tickets = $ticket->getTicket();
 
                     <div class="lg:grid grid-cols-2 grid grid-cols-2">
                         <h5 class="font-bold">Departure :</h5>
-                        <h6><?php echo  $ticket['Departure'] ?></h6>
+                        <h6><?php echo  $ticket['Reservation_time'] ?></h6>
                     </div>
                     <div class="lg:grid grid-cols-2 grid grid-cols-2">
                         <h5 class="font-bold">Price :</h5>
