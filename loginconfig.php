@@ -50,7 +50,7 @@ class loginconfig
                   $stm->execute(['email' => $this->email]);
                   $user = $stm->fetchAll();
 
-                  if (count($user) > 0 && password_verify($this->password, $user[0]['password']) == true && $_SESSION["token"] == $user[0]['token']) {
+                  if (count($user) > 0 && password_verify($this->password, $user[0]['password']) == true) {
 
                         $_SESSION['id'] = $user[0]['id'];
                         $_SESSION['email'] = $user[0]['email'];
@@ -67,5 +67,4 @@ class loginconfig
                   return $e->getMessage();
             }
       }
-
 }

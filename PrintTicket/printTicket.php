@@ -1,9 +1,10 @@
 <?php
 include "../fpdf185/fpdf.php";
+session_start();
 
 
-$nameFromSession = "Saad Meddiche";
-$idTrip = "10";
+$nameFromSession = $_SESSION["name"];
+$idTrip = $_SESSION['id_trip'];
 
 
 
@@ -20,6 +21,12 @@ $data = mysqli_fetch_assoc($query);
 
 $query2 = mysqli_query($connection, "SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` ON tickets.trip_id =$idTrip AND tickets.city_to_id = ville.id");
 $data2 = mysqli_fetch_assoc($query2);
+
+$query3 = mysqli_query($connection, "SELECT tickets.*, v_start.ville as start , s_end.ville as end, price FROM tickets inner join ville as v_start on v_start.id=tickets.city_from_id inner join ville as s_end on s_end.id=tickets.city_to_id INNER join trips on tickets.trip_id = trips.id_trip
+WHERE tickets.user_id = $idTrip");
+$data3 = mysqli_fetch_assoc($query3);
+
+
 
 $pdf = new FPDF();
 
