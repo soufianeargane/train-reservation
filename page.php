@@ -1,7 +1,9 @@
-<?php session_start();
+<?php
+session_start();
 if (!isset($_SESSION['id'])) {
       header("Location: login.php");
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +51,6 @@ if (!isset($_SESSION['id'])) {
                                                 <a href="./Account/regularAccount.php" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
                                                 </li>';
                                           endif ?>
-
                                     </ul>
                                     <div class="py-1">
                                           <a href="logout.php" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
@@ -258,14 +259,14 @@ if (!isset($_SESSION['id'])) {
                                           <button type="submit" name="showticket" class="  border-black	border-4 flex justify-between w-full block  px-4  border  sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                                                 <div>
                                                       <div class="flex space-x-2 inline-block text-xl font-extrabold items-center">
-                                                            <input class="w-24" value="<?php echo $fetche['starting_time'] ?>">
+                                                            <input class="w-16" value="<?php echo $fetche['starting_time'] ?>">
                                                             <ion-icon name="arrow-forward-outline"></ion-icon>
                                                             <span><?php echo $fetche['arriving_time'] ?></span>
                                                       </div>
                                                       <div class="pt-2 font-thin text-sm">
-                                                            <input name="station-arrive" class="font-mono" value="<?php echo  $fetche['station_arrive_id']; ?>">
+                                                            <input name="station-arrive w-8" class="font-mono" value="<?php echo  $fetche['station_arrive_id']; ?>">
                                                       </div>
-                                                      <div class="flex ">
+                                                      <div class="flex w-8">
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-6 h-8">
                                                                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
                                                             </svg>
@@ -281,13 +282,13 @@ if (!isset($_SESSION['id'])) {
                                                       </div>
                                                 </div>
 
-                                                <span class="px-2 ">
+                                                <span class="px-2 w-12">
                                                       <img src="./assets/img/oncf.png" alt="">
                                                 </span>
 
 
                                                 <div class=" pr-7 block">
-                                                      <input name="price" class="text-xl font-mono " value="<?php echo $fetche['price'] . "Dh" ?>">
+                                                      <input name="price" class="w-8 text-xl font-mono " value="<?php echo $fetche['price'] . "Dh" ?>">
                                                 </div>
                                                 <div class=" px-1 block">
                                                       <h6 class="text-xl font-mono "><?php echo ((40 / 100) * $fetche['price']) + $fetche['price'] ?> DH </h6>
@@ -307,7 +308,7 @@ if (!isset($_SESSION['id'])) {
                         <section class="shadow-xl">
                               <div class="grow bg-slate-800  rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                                     <a href="#">
-                                          <form action="./ticketsconfiguration.php" method="post">
+                                          <form action="" method="post">
                                                 <div class="pl-5 pb-5">
                                                       <a href="#">
                                                             <h5 class="text-3xl py-3 font-poppins font-extrabold text-white">Reserve your seconde class ticket </h5>
@@ -335,9 +336,9 @@ if (!isset($_SESSION['id'])) {
                         </section>
 
                         <section class="shadow-l py-5">
-                              <div class="grow bg-yellow-300 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                              <div class="grow bg-yellow-300 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 ">
                                     <a href="#">
-                                          <form action="./PrintTicket/printTicket.php" method="post">
+                                          <form action="" method="post">
                                                 <div class="pl-5 pb-5">
                                                       <a href="#">
                                                             <h5 class="text-4xl text-tahiti  font-poppins font-extrabold text-black">Reserve First class ticket now Comming Sooon !</h5>
@@ -356,7 +357,7 @@ if (!isset($_SESSION['id'])) {
                                                       <div class="flex items-center justify-between">
                                                             <label class="text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
                                                             <input type="text" name="total1stclass" value="<?php if (isset($_SESSION['price']) && isset($_SESSION['qte1'])) echo ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price']) * (int)$_SESSION['qte1'] ?>.DH" class="w-24 text-xl  font-extrabold  text-white" disabled>
-                                                            <button name="" type="" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
+                                                            <button name="firstclassbtn" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
 
                                                       </div>
                                                 </div>
