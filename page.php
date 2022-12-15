@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +12,6 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
       <title>Document</title>
 </head>
-
 <body style="position: static;overflow-y: scroll;">
 
 <div class="container mx-auto">
@@ -80,6 +80,7 @@
                         <!-- Dropdown menu -->
 
 
+
                   </div>
             </nav>
       </div>
@@ -91,12 +92,14 @@
       
       include './ticketsconfiguration.php';
 
-      $ticket = new configtickets();
+      $ticket = new configtickets();  
       $ticketcustomer=array();
       $ticketcustomer = $ticket -> fetchtickets($_SESSION['date']);
       $city = new  configtickets();
       $city  = array();
-      $total = (int)$_SESSION['price'] * (int)$_SESSION['qte.'];
+      if(isset($_SESSION['price']) && isset($_SESSION['qte.'])){
+            $total = (int)$_SESSION['price'] * (int)$_SESSION['qte.'];
+      }
       echo "Welcome " . " " . $_SESSION['username'];
       ?>
 
@@ -306,18 +309,18 @@
                                                 <div class=" items-center mt-2.5 mb-5">
                                                       <div class="flex">
                                                             <p class="text-white  font-extrabold">Selected item price :</p>
-                                                       <input disabled name="price" class="bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:text-blue-800 ml-3" value = "<?php echo $_SESSION['price'] ?>">
+                                                       <input disabled name="price" class="bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:text-blue-800 ml-3" value = "<?php if(isset($_SESSION['price'])) echo $_SESSION['price'] ?>">
                                                             <p class="text-white ">Qte. Selected :</p>
-                                                            <input  type="number" id="quantity" name="quantity" min="1" max="15"  class= "bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php echo $_SESSION['qte.']?>">
+                                                            <input  type="number" id="quantity" name="quantity" min="1" max="15"  class= "bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php if(isset($_SESSION['qte.'])) echo $_SESSION['qte.']?>">
                                                       </div>
                                                 </div>
                                                 <div class="flex items-center justify-between">
                                                       <label  class = "text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
-                                                      <input  name ="totalPRICE1"  value = "<?php echo  $total?>" class="w-24 text-xl  font-extrabold  text-white" disabled>
-                                                      <input name="station_start_id" type = "hidden" value ="<?php echo  $fetche['station_start_id'];?>"> 
-                                                      <input name="station_arrive_id" type = "hidden" value ="<?php echo  $fetche['station_arrive_id'];?>"> 
-                                                      <input name="starting_time" type = "hidden" value ="<?php echo  $fetche['starting_time'];?>"> 
-                                                      <input name="id_trip" type = "hidden" value ="<?php echo  $fetche['id_trip'];?>"> 
+                                                      <input  name ="totalPRICE1"  value = "<?php if(isset($total))echo  $total?>" class="w-24 text-xl  font-extrabold  text-white" disabled>
+                                                      <input name="station_start_id" type = "hidden" value ="<?php if(isset($fetche['station_start_id']))echo  $fetche['station_start_id'];?>"> 
+                                                      <input name="station_arrive_id" type = "hidden" value ="<?php if(isset($fetche['station_arrive_id']))echo  $fetche['station_arrive_id'];?>"> 
+                                                      <input name="starting_time" type = "hidden" value ="<?php if(isset($fetche['starting_time'])) echo  $fetche['starting_time'];?>"> 
+                                                      <input name="id_trip" type = "hidden" value ="<?php if(isset($fetche['id_trip'])) echo  $fetche['id_trip'];?>"> 
                                                       <button name = "calcualte" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
                                                 </div>
                                           </div>
@@ -336,17 +339,17 @@
                                                 <div class="  items-center mt-2.5 mb-5">
                                                       <div class="flex">
                                                             <p class="text-black  font-extrabold">Selected item price :</p>
-                                                            <input name ="p1" type="text"  disabled class="bg-blue-100 bg-slate-800  text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php echo  ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price'] )?>"> 
+                                                            <input name ="p1" type="text"  disabled class="bg-blue-100 bg-slate-800  text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php if(isset($_SESSION['price'] )) echo  ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price'] )?>"> 
                                                             
                                                       </div>
                                                       <div class="flex py-2">
                                                             <lablel class="text-black font-extrabold ">Qte. Selected :</label>
-                                                            <input  type="number" id="quantity" name="quantity1" min="1" max="15"  class= "bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php echo $_SESSION['qte1']?>">
+                                                            <input  type="number" id="quantity" name="quantity1" min="1" max="15"  class= "bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php if(isset($_SESSION['qte1'])) echo $_SESSION['qte1']?>">
                                                       </div>
                                                 </div>
                                                 <div class = "flex items-center justify-between">
                                                 <label  class = "text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
-                                                <input type="text"  name ="total1stclass" value = "<?php echo ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price'] ) *(int)$_SESSION['qte1']?>.DH" class="w-24 text-xl  font-extrabold  text-white" disabled>
+                                                <input type="text"  name ="total1stclass" value = "<?php if(isset($_SESSION['price'] ) && isset($_SESSION['qte1']))echo ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price'] ) *(int)$_SESSION['qte1'].'DH'?>" class="w-24 text-xl  font-extrabold  text-white" disabled>
                                                       <button name ="firstclassbtn" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
                                                           
                                                 </div>
@@ -366,6 +369,7 @@
             </div>
       </div>
       </div>
+      <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 </body>
 
 </html>

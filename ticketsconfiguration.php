@@ -1,8 +1,9 @@
 <?php
-session_start();
+
 
 include './ticketsclass.php';
 include './config/db.php';
+
 class configtickets extends Dbcon
 {
       public function fetchtickets($date)
@@ -70,9 +71,6 @@ if(isset($_POST['calcualte']))
  unset($_SESSION['qte.']);
  $_SESSION['qte.']  = 1;
  $_SESSION['qte.'] = $_POST['quantity'];
- $start_id = $_SESSION['station_start_id'];
- $arrive_id = $_SESSION['station_arrive_id'];
- $trip_id = $_SESSION['id_trip'];
  $user_id = $_SESSION['id'];
  $_SESSION['station_start_id'] = $_POST['station_start_id'];
  $_SESSION['station_arrive_id'] = $_POST['station_arrive_id'];
