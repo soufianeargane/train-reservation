@@ -4,7 +4,8 @@ session_start();
 
 
 $nameFromSession = $_SESSION["name"];
-$idTrip = "1";
+$idTrip = $_SESSION['id_trip'];
+
 
 
 

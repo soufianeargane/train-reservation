@@ -10,13 +10,16 @@ class ticket
       private $Trip_id;
       private $seat;
       
-      public function setticketsID()
+
+      public function setticketsID($id_T)
+
       {
             $this -> id_T = $id_T; 
       }
       public function getticketsID()
       {
-           return $this -> $id_T;
+
+            return $this -> id_T;
       }
 
       public function selectticketsbytime()
@@ -30,5 +33,3 @@ class ticket
 
 }
 
-
-?>

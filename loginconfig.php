@@ -54,6 +54,7 @@ class loginconfig
 
                         include "./Classes/activeAccount.php";
                         $active = new activation($user[0]['id']);
+
                         $_SESSION['id'] = $user[0]['id'];
                         $_SESSION['email'] = $user[0]['email'];
                         $_SESSION['name'] = $user[0]['name'];

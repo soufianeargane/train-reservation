@@ -51,7 +51,8 @@ if (isset($_POST['showticket'])) {
       unset($_SESSION['qte1']);
       $_SESSION['qte.']  = 1;
       $_SESSION['qte1']  = 1;
-      $id = $_POST['station-arrive'];
+
+      $id = $_SESSION['id'];
       $_SESSION['price'] = $_POST['price'];
       $name = new configtickets();
       $name->getarrivingcity($id);
@@ -73,7 +74,9 @@ if (isset($_POST['calcualte'])) {
       $name = new configtickets();
       $name->addticket($_SESSION['station_start_id'], $_SESSION['station_arrive_id'], date("Y-m-d h:i:sa"), $_POST['id_trip'], $user_id, $_SESSION['qte.']);
 
-      header("Location:./PrintTicket/printTicket.php");
+      // header("Location:./PrintTicket/printTicket.php");
+      echo "<script>window.location.href='./PrintTicket/printTicket.php'</script>";
+
 }
 
 if (isset($_POST['trip-day'])) {
