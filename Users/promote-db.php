@@ -1,8 +1,8 @@
 
 
+
 <?php
 if (isset($_POST["promoteBtnUser"])) {
-
 
 
     $idOfUser = $_POST["idOfUser"];
@@ -19,5 +19,4 @@ if (isset($_POST["promoteBtnUser"])) {
 
     header("location:./users.php");
 }
-
 

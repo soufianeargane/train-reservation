@@ -69,7 +69,6 @@ class Train extends Dbcon
         return $s['countTrain'];
 
     }
-
 }
 
 // PROSESS

@@ -136,13 +136,16 @@ class Accounts extends Dbcon
         }
 
         if ($this->NewPass == null || $this->RepeatPass == null || $this->NewPass == "" || $this->RepeatPass == "" || $this->NewPass == " " || $this->RepeatPass == " ") {
+
             // if only the name or the emain has been changed
             $this->updateAccount2();
             header("Location:" . $_SESSION["URLNNOW"]);
+
             exit();
         }
 
         $this->updateAccount();
+
 
         header("Location:" . $_SESSION["URLNNOW"]);
 
@@ -162,6 +165,7 @@ class Accounts extends Dbcon
     }
 
 
+
     // if only the name or the emain has been changed
     public function updateAccount2()
     {
@@ -173,5 +177,6 @@ class Accounts extends Dbcon
 
         $stm->execute([$this->nameAccount, $this->emailAccount]);
     }
+
 
 }

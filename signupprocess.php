@@ -89,6 +89,7 @@ if (isset($_POST['name']) && isset($_POST['email'])  &&  isset($_POST['password'
             session_start();
             $signup->insertData($tokenVerify);
             $_SESSION["messageOfValidationOfEmail"]="A Message has been send to your email ! Please check it so you can Verify";
+
             header('location:register.php?color=bg-green-100 rounded-lg py-5 px-6 mb-3 text-base text-green-700 inline-flex items-center w-full&&message=added succesfully');
       } else {
             header('location:register.php?color=bg-red-500 text-white font-bold rounded-t px-4 py-2&&message=fill with valid  infos');
