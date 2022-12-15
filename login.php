@@ -1,3 +1,12 @@
+<?php
+if (isset($_GET["tokenVerify"])) {
+
+    session_start();
+
+    $_SESSION["token"] = $_GET["tokenVerify"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

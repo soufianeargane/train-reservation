@@ -26,7 +26,6 @@ class loginconfig
       public function getpass()
       {
             return $this->password;
-
       }
 
       public function fetchAll()
@@ -38,19 +37,21 @@ class loginconfig
                   $stm->fetchAll();
             } catch (Exception $e) {
                   return $e->getMessage();
-
             }
       }
 
       public function login()
       {
 
+            session_start();
+
             try {
                   $stm = $this->dbcon->prepare("SELECT * FROM user where email = :email");
                   $stm->execute(['email' => $this->email]);
                   $user = $stm->fetchAll();
-                  if (count($user) > 0 && password_verify($this->password, $user[0]['password']) == true) {
-                        session_start();
+
+                  if (count($user) > 0 && password_verify($this->password, $user[0]['password']) == true && $_SESSION["token"] == $user[0]['token']) {
+
                         $_SESSION['id'] = $user[0]['id'];
                         $_SESSION['email'] = $user[0]['email'];
                         $_SESSION['name'] = $user[0]['name'];

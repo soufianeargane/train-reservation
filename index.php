@@ -117,11 +117,11 @@ $allCities2 = $city2->fetchAllCities();
     <div style="background-color: #eee" class="w-full margin-top">
         <div class="flex justify-center">
             <form id="form-father" action="page.php" method="post">
+
                 <div id="select-father" class="p-2 flex gap-2 flex-wrap justify-center">
                     <div id="select1" class="flex gap-2">
                         <!-- FROM WHERE -->
                         <div class="w-44 md:w-60">
-                          
                             <select name="city_start" id="from">
                                 <option class="text-blue-400" selected disabled>FROM</option>
                                 <?php
@@ -133,7 +133,6 @@ $allCities2 = $city2->fetchAllCities();
                         </div>
                         <!-- TO -->
                         <div class="w-44 md:w-60">
-    
                             <select name="station_arrive_id" id="to">
                                 <option class="text-blue-400" selected disabled>To</option>
                                 <?php
@@ -146,7 +145,8 @@ $allCities2 = $city2->fetchAllCities();
                     </div>
                     <div class="flex">
                         <div class="w-44 md:w-60">
-                            <input class="select2-container--default py-3" type="date" id="start" name="trip-day" />
+
+                            <input class="select2-container--default py-3" type="date" id="start" name="trip-day" min="2022-12-01" max="2023-12-31" />
                         </div>
                         <button class="bg-green-400 hover:bg-green-600 rounded" type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-8 text-white">

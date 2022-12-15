@@ -21,10 +21,14 @@
            
             <div class="md:w-1/2  px-16 py-6"> 
 
+
                 <?php 
+
                 session_start();
                 if(isset($_SESSION["messageOfValidationOfEmail"])){
                     echo $_SESSION["messageOfValidationOfEmail"];
+                    unset($_SESSION["messageOfValidationOfEmail"]);
+
                 } 
                 ?>
                 <h2 class="font-bold text-3xl text-white ml-2 ">Sign up</h3>
@@ -33,14 +37,13 @@
                         <input class="p-2 mt-4   rounded-xl" type="text" name="name" placeholder="Enter your name"  data-parsley-maxlength="15" required="">
 
                         <input class="p-2  rounded-xl" type="email" name="email" placeholder="Enter your email" data-parsleytrigger="change" required="">
-                   
                         <input class="p-2  rounded-xl" type="password" name="password" placeholder="*****************" required="">
 
                   
                         <input class="p-2  rounded-xl " type="password" name="comfirm-password" placeholder="*****************" required="">
 
                     
-                        <input class="p-3 border bg-[#B9E0FF] shadow-lg font-bold rounded-xl hover:scale-105 duration-300 " type="submit" value="Register">
+                        <button class="p-3 border bg-[#B9E0FF] shadow-lg font-bold rounded-xl hover:scale-105 duration-300" name="testX10" type="submit">Register</button>
                         <?php if (isset($_GET['message']) && isset($_GET['color'])):?>
 			        	<div id="deletesuccess" class="<?php echo $_GET['color']?> my-2">
 			    		<strong><?php echo $_GET['message']   ?>!</strong>

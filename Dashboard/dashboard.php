@@ -4,7 +4,8 @@ $_SESSION["URLNNOW"] = $_SERVER['REQUEST_URI'];
 
 include "../CRUDTRAIN/CrudTrain.php";
 include "../Crud-station/crud-station-controle-classes.php";
-
+include "../Classes/fetchusers.php";
+include "../modals/trips_modal.php";
 ?>
 
 
@@ -54,7 +55,7 @@ include "../Crud-station/crud-station-controle-classes.php";
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        <a href="../logout.php" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                             <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path>
                                             </svg>
@@ -166,7 +167,9 @@ include "../Crud-station/crud-station-controle-classes.php";
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+
+                                    <a href="../logout.php" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+
                                         <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path>
                                         </svg>
@@ -250,40 +253,55 @@ include "../Crud-station/crud-station-controle-classes.php";
 
         <!-- =====================Cards===================== -->
         <div class="container mx-5 my-5 grid lg:grid-cols-2 gap-5 items-center" id="bla">
-            <div class="cards">
-                <a href="../Station/station.php" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row  hover:bg-gray-100 border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div class="cards ">
+                <a href="../Station/station.php" class="flex flex-col items-center bg-white  rounded-lg shadow-md md:flex-row  hover:bg-gray-100 border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <!-- <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg" src="../img/train.jpg" alt=""> -->
                     <div class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg mx-3" style="height: 120px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(../img/station.jpg);"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Stations</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 120</p>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : <?php
+
+                                                                                                    $show_num_station  =   new crudStationConfigue();
+
+                                                                                                    echo $show_num_station->CountStation(); ?></p>
+                        </p>
+                        <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p> -->
 
                     </div>
                 </a>
             </div>
 
             <div class="cards">
-                <a href="../Train/train.php" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row  hover:bg-gray-100 border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <a href="../Train/train.php" class="flex flex-col items-center bg-white  rounded-lg shadow-md md:flex-row  hover:bg-gray-100 border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <!-- <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg" src="../img/train.jpg" alt=""> -->
                     <div class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg mx-3" style="height: 120px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(../img/train.jpg);"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Trains</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 120</p>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p>
+
+
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible :<?php
+
+                                                                                                    $show_num_train  =   new train();
+
+                                                                                                    echo $show_num_train->CountTrain(); ?></p>
+
+                        <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 120</p> -->
+
 
                     </div>
                 </a>
             </div>
 
             <div class="cards">
-                <a href="../Tickets/tickets.php" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+
+                <a href="../Tickets/tickets.php" class="flex flex-col items-center bg-white  rounded-lg shadow-md md:flex-row  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+
                     <!-- <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg" src="../img/train.jpg" alt=""> -->
                     <div class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg mx-3" style="height: 120px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(../img/tickets.jpg);"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Tickets</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 120</p>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 12</p>
+
 
                     </div>
                 </a>
@@ -295,8 +313,12 @@ include "../Crud-station/crud-station-controle-classes.php";
                     <div class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg mx-3" style="height: 120px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(../img/trip.jpg);"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Trips</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 120</p>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : <?php
+
+                                                                                                    $show_num_trips  =   new trip();
+
+                                                                                                    echo $show_num_trips->CountTrips(); ?></p>
+                        <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p> -->
 
                     </div>
                 </a>
@@ -308,8 +330,14 @@ include "../Crud-station/crud-station-controle-classes.php";
                     <div class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg mx-3" style="height: 120px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(../img/users.jpg);"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Users</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 120</p>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p>
+
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : <?php
+
+                                                                                                    $show_num_train  =   new users();
+
+                                                                                                    echo $show_num_train->CountUser(); ?></p>
+
+                        <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p> -->
 
                     </div>
                 </a>
@@ -320,8 +348,13 @@ include "../Crud-station/crud-station-controle-classes.php";
                     <div class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg mx-3" style="height: 120px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(../img/admin.jpg);"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Admins</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 120</p>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p>
+
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : <?php
+
+                                                                                                    $show_num_Admin  =   new users();
+
+                                                                                                    echo $show_num_Admin->CountAdmin(); ?></p>
+                        <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Indisponible : 20</p> -->
 
                     </div>
                 </a>
