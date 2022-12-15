@@ -85,11 +85,6 @@ $allCities2 = $city2->fetchCities();
                         </select>
                     </div>
                     <div>
-                        <!-- input type date and time -->
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting date and time</label>
-                        <input value="<?php echo $data['starting_time'] ?>" type="datetime-local" name="starting_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                    </div>
-                    <div>
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">To</label>
                         <select name="station_arrive_id" id="to">
                             <option value="<?php echo $data['station_arrive_id'] ?>" selected><?php echo $data['end'] ?></option>
@@ -103,21 +98,29 @@ $allCities2 = $city2->fetchCities();
                     <div>
                         <!-- input type date and time -->
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting date and time</label>
-                        <input value="<?php echo $data['arriving_time'] ?>" type="datetime-local" name="arriving_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        <input value="<?php echo $data['starting_time'] ?>" type="time" name="starting_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     </div>
                     <div>
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Price</label>
-                        <input type="text" value="<?php echo $data['price'] ?>" name="price" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
+                        <!-- input type date and time -->
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting date and time</label>
+                        <input value="<?php echo $data['arriving_time'] ?>" type="time" name="arriving_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     </div>
                     <div>
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Number of seats</label>
-                        <input type="text" value="<?php echo $data['seat'] ?>" name="seats_number" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
-                    </div>
-                    <!-- Modal footer -->
-                    <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button data-modal-toggle="staticModal2" type="submit" name="update_trip" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Update</button>
-                        <button data-modal-toggle="staticModal2" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
-                    </div>
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Date</label>
+                        <input type="date" value="<?php echo $data['day'] ?>" name="date" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
+                        <div>
+                            <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Price</label>
+                            <input type="text" value="<?php echo $data['price'] ?>" name="price" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
+                        </div>
+                        <div>
+                            <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Number of seats</label>
+                            <input type="text" value="<?php echo $data['seat'] ?>" name="seats_number" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button data-modal-toggle="staticModal2" type="submit" name="update_trip" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Update</button>
+                            <button data-modal-toggle="staticModal2" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+                        </div>
 
             </form>
         </div>

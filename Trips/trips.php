@@ -258,6 +258,7 @@ include "../CRUDTRAIN/CrudTrain.php";
                         <th class="border border-slate-600 ...">Train name</th>
                         <th class="border border-slate-700 ...">From</th>
                         <th class="border border-slate-600 ...">To</th>
+                        <th class="border border-slate-600 ...">Day</th>
                         <th class="border border-slate-600 ...">Price</th>
 
                         <th class="border border-slate-600 ...">Seats</th>
@@ -289,6 +290,7 @@ include "../CRUDTRAIN/CrudTrain.php";
                                 <strong><?php echo $row['end'] ?> </strong>
                                 <br> at <?php echo $row['arriving_time'] ?>
                             </td>
+                            <td class="border border-slate-700 ..."><?php echo $row['day'] ?></td>
                             <td class="border border-slate-700 ..."><?php echo $row['price'] ?>dhs</td>
 
                             <td class="border border-slate-700 ..."><?php echo $row['seat'] ?></td>
