@@ -8,6 +8,7 @@ $idTrip = $_SESSION['id_trip'];
 
 
 
+
 //make a connection to the Data Base
 $serverName = "localhost";
 $userName = "root";
@@ -16,7 +17,7 @@ $dataBase = "sgtt";
 $connection = mysqli_connect($serverName, $userName, $password, $dataBase);
 //end
 
-$query = mysqli_query($connection, "SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` ON tickets.trip_id =$idTrip AND tickets.city_from_id = ville.id");
+$query = mysqli_query($connection, "SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` JOIN `train` ON tickets.trip_id =$idTrip AND tickets.city_from_id = ville.id AND trips.train_id=train.id_train");
 $data = mysqli_fetch_assoc($query);
 
 $query2 = mysqli_query($connection, "SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` ON tickets.trip_id =$idTrip AND tickets.city_to_id = ville.id");
@@ -55,7 +56,7 @@ $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(2, 5, '', 0, 0);
 $pdf->Cell(100, 5, $nameFromSession, 0, 0);
 $pdf->Cell(45, 5, $data["price"], 0, 0);
-$pdf->Cell(45, 5, $data["train_id"], 0, 1); //end line
+$pdf->Cell(45, 5, $data["name"], 0, 1); //end line
 
 //espace
 $pdf->Cell(190, 5, '', 0, 1); //end line

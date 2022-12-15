@@ -10,12 +10,15 @@ class ticket
       private $Trip_id;
       private $seat;
       
+
       public function setticketsID($id_T)
+
       {
             $this -> id_T = $id_T; 
       }
       public function getticketsID()
       {
+
             return $this -> id_T;
       }
 
@@ -29,3 +32,4 @@ class ticket
 
 
 }
+
