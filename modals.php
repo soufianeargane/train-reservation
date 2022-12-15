@@ -183,8 +183,8 @@ $trains   =   $show_trains->ShowAllData();
                             <option selected disabled>Select the train</option>
                             <?php
                             foreach ($trains as $train) {
-                                echo '<option value="' . $train["id_train"] . '">' . $train["name"] . '</option>';
 
+                                echo '<option value="' . $train["id_train"] . '">' . $train["name"] . '</option>';
                             }
                             ?>
                         </select>
@@ -225,6 +225,7 @@ $trains   =   $show_trains->ShowAllData();
                         <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Price</label>
                         <input type="text" name="price" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
                     </div>
+
                     <div>
                         <label for="text" class="block  text-sm font-medium text-gray-900 ">Number of seats</label>
                         <input type="text" name="seats_number" id="" placeholder="number of seats" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
