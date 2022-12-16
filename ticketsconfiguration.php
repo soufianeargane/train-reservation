@@ -3,6 +3,7 @@
 
 include './ticketsclass.php';
 include './config/db.php';
+
 class configtickets extends Dbcon
 {
       public function fetchtickets($date)
@@ -76,6 +77,7 @@ if (isset($_POST['calcualte'])) {
 
       // header("Location:./PrintTicket/printTicket.php");
       echo "<script>window.location.href='./PrintTicket/printTicket.php'</script>";
+
 
 }
 
