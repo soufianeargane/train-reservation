@@ -270,6 +270,7 @@ $_SESSION["croissante"] = 0;
                                                       <div class="flex space-x-2 inline-block text-xl font-extrabold items-center">
 
                                                             <input class="w-16" value="<?php echo $fetche['starting_time'] ?>">
+                                                            <input type="hidden" name="id_trip" value="<?php echo $fetche['id_trip'] ?>">
 
                                                             <ion-icon name="arrow-forward-outline"></ion-icon>
                                                             <span><?php echo $fetche['arriving_time'] ?></span>
@@ -353,7 +354,6 @@ $_SESSION["croissante"] = 0;
                                                       <input name="station_start_id" type = "hidden" value ="<?php if(isset($fetche['station_start_id']))echo  $fetche['station_start_id'];?>"> 
                                                       <input name="station_arrive_id" type = "hidden" value ="<?php if(isset($fetche['station_arrive_id']))echo  $fetche['station_arrive_id'];?>"> 
                                                       <input name="starting_time" type = "hidden" value ="<?php if(isset($fetche['starting_time'])) echo  $fetche['starting_time'];?>"> 
-                                                      <input name="id_trip" type = "hidden" value ="<?php if(isset($fetche['id_trip'])) echo  $fetche['id_trip'];?>"> 
                                                       <button name = "calcualte" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
                                                 </div>
                                           </div>

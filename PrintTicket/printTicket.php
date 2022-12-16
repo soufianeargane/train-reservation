@@ -17,10 +17,10 @@ $dataBase = "sgtt";
 $connection = mysqli_connect($serverName, $userName, $password, $dataBase);
 //end
 
-$query = mysqli_query($connection, "SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` JOIN `train` ON tickets.trip_id =$idTrip AND tickets.city_from_id = ville.id AND trips.train_id=train.id_train");
+$query = mysqli_query($connection, "SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` JOIN `train` ON tickets.trip_id =$idTrip AND trips.id_trip =$idTrip AND tickets.city_from_id = ville.id  AND trips.train_id=train.id_train");
 $data = mysqli_fetch_assoc($query);
 
-$query2 = mysqli_query($connection, "SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` ON tickets.trip_id =$idTrip AND tickets.city_to_id = ville.id");
+$query2 = mysqli_query($connection, "SELECT * FROM `tickets` INNER JOIN `trips` JOIN `ville` ON tickets.trip_id =$idTrip AND trips.id_trip =$idTrip AND tickets.city_to_id = ville.id");
 $data2 = mysqli_fetch_assoc($query2);
 
 
