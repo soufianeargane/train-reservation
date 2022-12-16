@@ -69,6 +69,13 @@ class Train extends Dbcon
         return $s['countTrain'];
 
     }
+    public function CountTicket(){
+        $stm = $this->connect()->prepare("SELECT COUNT(*) as 'countTickets' FROM `tickets`");
+        $stm->execute(); 
+        $s = $stm->fetch();
+        return $s['countTickets'];
+
+    }
 }
 
 // PROSESS

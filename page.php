@@ -1,9 +1,11 @@
-
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
       header("Location: login.php");
 }
+
+$_SESSION["croissante"] = 0;
+
 
 
 ?>
@@ -99,6 +101,8 @@ if (!isset($_SESSION['id'])) {
       <?php
 
       include './ticketsconfiguration.php';
+      include "./Timer/timer.php";
+
 
       $ticket = new configtickets();
       $ticketcustomer = array();
@@ -295,7 +299,15 @@ if (!isset($_SESSION['id'])) {
 
                                                       <img src="./assets/img/oncf.png" alt="">
                                                 </span>
+                                                
+                                                <?php
 
+                                                $idOfTrip = $fetche['id_trip'];
+
+                                                echo $idOfTrip;
+                                                include "./Timer/test.php";
+
+                                                ?>
 
                                                 <div class=" pr-7 block">
 

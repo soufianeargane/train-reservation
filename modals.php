@@ -159,7 +159,7 @@ $show_trains  =   new train();
 
 $trains   =   $show_trains->ShowAllData();
 ?>
-<div id="staticModal2" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+<div id="staticModal2" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-2 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
     <div class="relative w-full h-full max-w-2xl md:h-auto">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -176,9 +176,9 @@ $trains   =   $show_trains->ShowAllData();
                     </button>
                 </div>
                 <!-- Modal body -->
-                <div class="p-6 space-y-6">
+                <div class="p-4 space-y-3">
                     <div>
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name Of Train</label>
+                        <label for="text" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Name Of Train</label>
                         <select name="train_id" id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                             <option selected disabled>Select the train</option>
                             <?php
@@ -190,7 +190,7 @@ $trains   =   $show_trains->ShowAllData();
                         </select>
                     </div>
                     <div>
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">From</label>
+                        <label for="text" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">From</label>
                         <select name="station_start_id" id="from">
                             <option selected disabled>Select your country</option>
                             <?php
@@ -201,12 +201,7 @@ $trains   =   $show_trains->ShowAllData();
                         </select>
                     </div>
                     <div>
-                        <!-- input type date and time -->
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting date and time</label>
-                        <input type="datetime-local" name="starting_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                    </div>
-                    <div>
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">To</label>
+                        <label for="text" class="block mb-1 text-sm font-medium text-gray-900 ">To</label>
                         <select name="station_arrive_id" id="to">
                             <option selected disabled>Select your country</option>
                             <?php
@@ -218,11 +213,20 @@ $trains   =   $show_trains->ShowAllData();
                     </div>
                     <div>
                         <!-- input type date and time -->
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">starting date and time</label>
-                        <input type="datetime-local" name="arriving_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        <label for="text" class="block mb-1 text-sm font-medium text-gray-900 ">starting time</label>
+                        <input type="time" name="starting_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     </div>
                     <div>
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Price</label>
+                        <!-- input type date and time -->
+                        <label for="text" class="block mb-1 text-sm font-medium text-gray-900 ">starting date and time</label>
+                        <input type="time" name="arriving_time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                    </div>
+                    <div>
+                        <label for="text" class="block mb-1 text-sm font-medium text-gray-900 ">day of trip</label>
+                        <input type="date" name="day" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                    </div>
+                    <div>
+                        <label for="text" class="block mb-1 text-sm font-medium text-gray-900 ">Price</label>
                         <input type="text" name="price" id="" placeholder="City ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
                     </div>
 
@@ -231,7 +235,7 @@ $trains   =   $show_trains->ShowAllData();
                         <input type="text" name="seats_number" id="" placeholder="number of seats" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
                     </div>
                     <!-- Modal footer -->
-                    <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <div class="flex items-center p-3 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                         <button data-modal-toggle="staticModal2" type="submit" name="add_trip" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add</button>
                         <button data-modal-toggle="staticModal2" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
                     </div>

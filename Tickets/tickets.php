@@ -1,7 +1,21 @@
 <?php
 
-include "../CRUDTRAIN/CrudTrain.php";
-include "../Crud-station/crud-station-controle-classes.php";
+include_once '../config/db.php';
+class getTicket extends Dbcon
+{
+    public function getTicket()
+    {
+        $db = $this->connect();
+        $sql = "SELECT tickets.*, v_start.ville as start , s_end.ville as end, price, name FROM tickets inner join ville as v_start on v_start.id=tickets.city_from_id inner join ville as s_end on s_end.id=tickets.city_to_id INNER join trips on tickets.trip_id = trips.id_trip INNER join user on tickets.user_id = user.id";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+}
+$ticket = new getTicket();
+$reservations = $ticket->getTicket();
+
 
 ?>
 
@@ -255,47 +269,29 @@ include "../Crud-station/crud-station-controle-classes.php";
                     <tr>
                         <th class="border border-slate-600 ...">#</th>
                         <th class="border border-slate-600 ...">Owner</th>
-                        <th class="border border-slate-700 ...">Price</th>
-                        <th class="border border-slate-600 ...">Train</th>
+                        <th class="border border-slate-600 ...">Time of reservation</th>
                         <th class="border border-slate-600 ...">From</th>
                         <th class="border border-slate-600 ...">To</th>
-                        <th class="border border-slate-600 ...">Seat</th>
-                        <th class="border border-slate-600 ...">Action</th>
+                        <th class="border border-slate-700 ...">quantity</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="border border-slate-700 ...">1</td>
-                        <td class="border border-slate-700 ...">Saad Meddiche</td>
-                        <td class="border border-slate-700 ...">100$</td>
-                        <td class="border border-slate-700 ...">A1101</td>
-                        <td class="border border-slate-700 ...">Tourirt</td>
-                        <td class="border border-slate-700 ...">CasaBlanca</td>
-                        <td class="border border-slate-700 ...">#19</td>
-
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
-                            </div>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td class="border border-slate-700 ...">5</td>
-                        <td class="border border-slate-700 ...">Anas Meddiche</td>
-                        <td class="border border-slate-700 ...">100$</td>
-                        <td class="border border-slate-700 ...">A1101</td>
-                        <td class="border border-slate-700 ...">Taourirt</td>
-                        <td class="border border-slate-700 ...">CasaBlanca</td>
-                        <td class="border border-slate-700 ...">#11</td>
-                        <td class="border border-slate-700 ">
-                            <div class="flex flex-wrap gap-2 py-2 justify-center">
-                                <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Update</button>
-                                <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
+                    <?php
+                    $i = 1;
+                    foreach ($reservations as $reservation) {
+                    ?>
+                        <tr>
+                            <td class="border border-slate-700 ..."><?php echo $i ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $reservation['name'] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $reservation['Reservation_time'] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $reservation['start'] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $reservation['end'] ?></td>
+                            <td class="border border-slate-700 ..."><?php echo $reservation['qte'] ?></td>
+                        </tr>
+                    <?php
+                        $i++;
+                    }
+                    ?>
 
                 </tbody>
                 <!-- The link from where i got this code -->
