@@ -93,8 +93,6 @@ if (!isset($_SESSION['id'])) {
             </nav>
       </div>
       <?php
-
-      var_dump($_SESSION['id']);
       ?>
       <?php
 
@@ -111,7 +109,6 @@ if (!isset($_SESSION['id'])) {
             $total = (int)$_SESSION['price'] * (int)$_SESSION['qte.'];
       }
 
-      echo "Welcome " . " " . $_SESSION['username'];
       ?>
 
       <div class="container mx-auto">
@@ -242,7 +239,7 @@ if (!isset($_SESSION['id'])) {
                               <div class=" rounded-md sm:h-5 flex justify-between items-center divide-slate-200 bg-slate-100 sm:py-14">
                                     <div class="text-lg pl-8">
                                           <ion-icon name="calendar-outline"></ion-icon>
-                                          <span class="font-medium">Mon <?php echo date("Y/m/d") ?></span>
+                                          <span class="font-medium"><?php echo date("l jS \of F Y h:i:s");  ?></span>
                                     </div>
                                     <div>
                                           <span class="text-lg pl-0">Standar</span>
