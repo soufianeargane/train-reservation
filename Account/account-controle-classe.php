@@ -161,7 +161,9 @@ class Accounts extends Dbcon
         $_SESSION['password'] = $hashedPassword;
         $_SESSION['username'] = explode("@", $_SESSION['email']);
 
+
         $stm->execute([$this->nameAccount, $this->emailAccount, $hashedPassword]);
+        
     }
 
 

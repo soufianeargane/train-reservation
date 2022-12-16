@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
@@ -24,6 +23,7 @@ $_SESSION["croissante"] = 0;
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
       <title>Document</title>
 </head>
+
 <body style="position: static;overflow-y: scroll;">
 
       <div class="container mx-auto">
@@ -108,15 +108,16 @@ $_SESSION["croissante"] = 0;
 
       $ticket = new configtickets();
       $ticketcustomer = array();
+      $ticketcustomer = $ticket->fetchtickets("2022-02-02");
 
-      $ticketcustomer = $ticket->fetchtickets($_SESSION['date']);
+
 
       $city = new  configtickets();
       $city  = array();
       if (isset($_SESSION['price']) && isset($_SESSION['qte.'])) {
             $total = (int)$_SESSION['price'] * (int)$_SESSION['qte.'];
       }
-      echo "Welcome " . " " . $_SESSION['username'];
+      print_r("Welcome " . " " . $_SESSION['username']);
       ?>
 
       <div class="container mx-auto">
@@ -301,7 +302,7 @@ $_SESSION["croissante"] = 0;
 
                                                       <img src="./assets/img/oncf.png" alt="">
                                                 </span>
-                                                
+
                                                 <?php
 
                                                 $idOfTrip = $fetche['id_trip'];
@@ -334,29 +335,29 @@ $_SESSION["croissante"] = 0;
                         <section class="shadow-xl">
                               <div class="grow bg-slate-800  rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
 
-                                     <a href="#">
-                                          <form  action="" method="post">
-                                          <div class="pl-5 pb-5">
-                                                <a href="#">
-                                                      <h5 class="text-3xl py-3 font-poppins font-extrabold text-white">Reserve your seconde class ticket </h5>
-                                                </a>
-                                                <div class=" items-center mt-2.5 mb-5">
-                                                      <div class="flex">
-                                                            <p class="text-white  font-extrabold">Selected item price :</p>
-                                                       <input disabled name="price" class="bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:text-blue-800 ml-3" value = "<?php if(isset($_SESSION['price'])) echo $_SESSION['price'] ?>">
-                                                            <p class="text-white ">Qte. Selected :</p>
-                                                            <input  type="number" id="quantity" name="quantity" min="1" max="15"  class= "bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php if(isset($_SESSION['qte.'])) echo $_SESSION['qte.']?>">
+                                    <a href="#">
+                                          <form action="" method="post">
+                                                <div class="pl-5 pb-5">
+                                                      <a href="#">
+                                                            <h5 class="text-3xl py-3 font-poppins font-extrabold text-white">Reserve your seconde class ticket </h5>
+                                                      </a>
+                                                      <div class=" items-center mt-2.5 mb-5">
+                                                            <div class="flex">
+                                                                  <p class="text-white  font-extrabold">Selected item price :</p>
+                                                                  <input disabled name="price" class="bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:text-blue-800 ml-3" value="<?php if (isset($_SESSION['price'])) echo $_SESSION['price'] ?>">
+                                                                  <p class="text-white ">Qte. Selected :</p>
+                                                                  <input type="number" id="quantity" name="quantity" min="1" max="15" class="bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value="<?php if (isset($_SESSION['qte.'])) echo $_SESSION['qte.'] ?>">
+                                                            </div>
+                                                      </div>
+                                                      <div class="flex items-center justify-between">
+                                                            <label class="text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
+                                                            <input name="totalPRICE1" value="<?php if (isset($total)) echo  $total ?>" class="w-24 text-xl  font-extrabold  text-white" disabled>
+                                                            <input name="station_start_id" type="hidden" value="<?php if (isset($fetche['station_start_id'])) echo  $fetche['station_start_id']; ?>">
+                                                            <input name="station_arrive_id" type="hidden" value="<?php if (isset($fetche['station_arrive_id'])) echo  $fetche['station_arrive_id']; ?>">
+                                                            <input name="starting_time" type="hidden" value="<?php if (isset($fetche['starting_time'])) echo  $fetche['starting_time']; ?>">
+                                                            <button name="calcualte" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
                                                       </div>
                                                 </div>
-                                                <div class="flex items-center justify-between">
-                                                      <label  class = "text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
-                                                      <input  name ="totalPRICE1"  value = "<?php if(isset($total))echo  $total?>" class="w-24 text-xl  font-extrabold  text-white" disabled>
-                                                      <input name="station_start_id" type = "hidden" value ="<?php if(isset($fetche['station_start_id']))echo  $fetche['station_start_id'];?>"> 
-                                                      <input name="station_arrive_id" type = "hidden" value ="<?php if(isset($fetche['station_arrive_id']))echo  $fetche['station_arrive_id'];?>"> 
-                                                      <input name="starting_time" type = "hidden" value ="<?php if(isset($fetche['starting_time'])) echo  $fetche['starting_time'];?>"> 
-                                                      <button name = "calcualte" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
-                                                </div>
-                                          </div>
 
                                           </form>
                               </div>
@@ -365,30 +366,30 @@ $_SESSION["croissante"] = 0;
                         <section class="shadow-l py-5">
                               <div class="grow bg-yellow-300 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 ">
                                     <a href="#">
-                                    <form  action="" method="post">
-                                          <div class="pl-5 pb-5">
-                                                <a href="#">
-                                                      <h5 class="text-4xl text-tahiti  font-poppins font-extrabold text-black">Reserve First class ticket now Comming Sooon !</h5>
-                                                </a>
-                                                <div class="  items-center mt-2.5 mb-5">
-                                                      <div class="flex">
-                                                            <p class="text-black  font-extrabold">Selected item price :</p>
-                                                            <input name ="p1" type="text"  disabled class="bg-blue-100 bg-slate-800  text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php if(isset($_SESSION['price'] )) echo  ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price'] )?>"> 
-                                                            
+                                          <form action="" method="post">
+                                                <div class="pl-5 pb-5">
+                                                      <a href="#">
+                                                            <h5 class="text-4xl text-tahiti  font-poppins font-extrabold text-black">Reserve First class ticket now Comming Sooon !</h5>
+                                                      </a>
+                                                      <div class="  items-center mt-2.5 mb-5">
+                                                            <div class="flex">
+                                                                  <p class="text-black  font-extrabold">Selected item price :</p>
+                                                                  <input name="p1" type="text" disabled class="bg-blue-100 bg-slate-800  text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value="<?php if (isset($_SESSION['price'])) echo ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price']) ?>">
+
+                                                            </div>
+                                                            <div class="flex py-2">
+                                                                  <lablel class="text-black font-extrabold ">Qte. Selected :</label>
+                                                                        <input type="number" id="quantity" name="quantity1" min="1" max="15" class="bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value="<?php if (isset($_SESSION['qte1'])) echo $_SESSION['qte1'] ?>">
+                                                            </div>
                                                       </div>
-                                                      <div class="flex py-2">
-                                                            <lablel class="text-black font-extrabold ">Qte. Selected :</label>
-                                                            <input  type="number" id="quantity" name="quantity1" min="1" max="15"  class= "bg-blue-100 bg-slate-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3" value = "<?php if(isset($_SESSION['qte1'])) echo $_SESSION['qte1']?>">
+                                                      <div class="flex items-center justify-between">
+                                                            <label class="text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
+                                                            <input type="text" name="total1stclass" value="<?php if (isset($_SESSION['price']) && isset($_SESSION['qte1'])) echo ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price']) * (int)$_SESSION['qte1'] . 'DH' ?>" class="w-24 text-xl  font-extrabold  text-white" disabled>
+                                                            <button name="firstclassbtn" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
+
                                                       </div>
                                                 </div>
-                                                <div class = "flex items-center justify-between">
-                                                <label  class = "text-white text-3xl  font-extrabold"> TOTAL PRICE TICKET :</label>
-                                                <input type="text"  name ="total1stclass" value = "<?php if(isset($_SESSION['price'] ) && isset($_SESSION['qte1']))echo ((40 / 100) * (int)$_SESSION['price']  + (int)$_SESSION['price'] ) *(int)$_SESSION['qte1'].'DH'?>" class="w-24 text-xl  font-extrabold  text-white" disabled>
-                                                      <button name ="firstclassbtn" type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Get your ticket know</button>
-                                                          
-                                                </div>
-                                          </div>
-                                    </form>
+                                          </form>
                               </div>
                         </section>
 

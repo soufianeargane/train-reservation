@@ -73,7 +73,6 @@ if (isset($_POST['calcualte'])) {
       $_SESSION['station_arrive_id'] = $_POST['station_arrive_id'];
       $_SESSION['starting_time'] = $_POST['starting_time'];
       $date = date("h:i:sa");
-
       $name = new configtickets();
       $name->addticket($_SESSION['station_start_id'], $_SESSION['station_arrive_id'], date("Y-m-d h:i:sa"), $_POST['id_trip'], $user_id, $_SESSION['qte.']);
 
@@ -82,10 +81,9 @@ if (isset($_POST['calcualte'])) {
 }
 
 if (isset($_POST['trip-day'])) {
-      $day = $_POST['trip-day'];
-      $_SESSION['date'] = $day;
+      $_SESSION['date']= $_POST['trip-day'];
       $ticket = new configtickets();
-      $ticket->fetchtickets($day);
+      $ticket->fetchtickets($_SESSION['date']);
 }
 
 if (isset($_POST['firstclassbtn'])) {
