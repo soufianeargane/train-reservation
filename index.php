@@ -147,6 +147,7 @@ $allCities2 = $city2->fetchAllCities();
                         <div class="w-44 md:w-60">
 
                             <input class="select2-container--default py-3" type="date" id="start" name="trip-day"  />
+
                         </div>
                         <button class="bg-green-400 hover:bg-green-600 rounded" type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-8 text-white">

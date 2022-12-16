@@ -300,7 +300,11 @@ include "../modals/trips_modal.php";
                     <div class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-40 md:rounded-none md:rounded-l-lg mx-3" style="height: 120px; background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url(../img/tickets.jpg);"></div>
                     <div class="flex flex-col justify-between p-4 leading-normal">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Tickets</h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : 12</p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Disponible : <?php
+
+                                                                                                    $show_num_ticket  =   new train();
+
+                                                                                                    echo $show_num_ticket->CountTicket(); ?></p>
 
 
                     </div>

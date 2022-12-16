@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (isset($_SESSION["name"])) {
+    header("Location:./page.php");
+}
 if (isset($_GET["tokenVerify"])) {
 
     session_start();
